@@ -2,7 +2,9 @@
 
 import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import L from "leaflet";
+import { fallbackMarkerIcon, markerIconByName } from "../constants/markerIcons";
 
 type GeoJsonFeature = {
   type: "Feature";
@@ -22,6 +24,13 @@ type LineStringFeature = GeoJsonFeature & {
   geometry: {
     type: "LineString";
     coordinates: [number, number][];
+  };
+};
+
+type PointFeature = GeoJsonFeature & {
+  geometry: {
+    type: "Point";
+    coordinates: [number, number];
   };
 };
 
@@ -80,6 +89,79 @@ function isLineStringFeature(feature: GeoJsonFeature | null): feature is LineStr
     feature?.geometry?.type === "LineString" &&
     Array.isArray(feature.geometry.coordinates)
   );
+}
+
+function isPointFeature(feature: GeoJsonFeature | null): feature is PointFeature {
+  return (
+    feature?.geometry?.type === "Point" &&
+    Array.isArray(feature.geometry.coordinates) &&
+    feature.geometry.coordinates.length >= 2
+  );
+}
+
+function getFeatureName(feature: GeoJsonFeature | null) {
+  return formatPropertyValue(feature?.properties?.name);
+}
+
+function createPointMarkerIcon(feature: PointFeature) {
+  const markerName = getFeatureName(feature);
+  const Icon =
+    markerIconByName[markerName as keyof typeof markerIconByName] ?? fallbackMarkerIcon;
+  const markerColor = String(feature.properties?.["marker-color"] ?? "#dc143c");
+  const iconMarkup = renderToStaticMarkup(
+    <div className="map-marker-icon" style={{ backgroundColor: markerColor }}>
+      <Icon aria-hidden="true" size={20} strokeWidth={2.5} />
+    </div>,
+  );
+
+  return L.divIcon({
+    className: "map-marker",
+    html: iconMarkup,
+    iconAnchor: [22, 22],
+    iconSize: [44, 44],
+    popupAnchor: [0, -22],
+  });
+}
+
+function getFeatureColor(feature: GeoJsonFeature | null) {
+  return String(
+    feature?.properties?.stroke ??
+      feature?.properties?.["marker-color"] ??
+      "#ef4444",
+  );
+}
+
+function getFeaturePathStyle(
+  feature: GeoJsonFeature | null | undefined,
+  isSelected = false,
+): L.PathOptions {
+  return {
+    color: isSelected ? "#111827" : getFeatureColor(feature ?? null),
+    fillColor: String(feature?.properties?.["marker-color"] ?? "#ef4444"),
+    fillOpacity: feature?.geometry?.type === "Point" ? 1 : undefined,
+    lineCap: "round",
+    lineJoin: "round",
+    opacity: isSelected ? 1 : 0.92,
+    weight: isSelected ? 10 : 6,
+  };
+}
+
+function setLayerSelected(
+  layer: L.Layer,
+  feature: GeoJsonFeature | null,
+  isSelected: boolean,
+) {
+  if (layer instanceof L.Marker) {
+    layer.getElement()?.classList.toggle("map-marker-selected", isSelected);
+    layer.setZIndexOffset(isSelected ? 1000 : 0);
+  }
+
+  if (layer instanceof L.Path) {
+    layer.setStyle(getFeaturePathStyle(feature, isSelected));
+    if (isSelected) {
+      layer.bringToFront();
+    }
+  }
 }
 
 function formatPropertyValue(value: unknown) {
@@ -155,6 +237,10 @@ export default function MapViewer() {
   const mapRef = useRef<L.Map | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
   const routeLayerRef = useRef<L.GeoJSON | null>(null);
+  const selectedLayerRef = useRef<{
+    feature: GeoJsonFeature;
+    layer: L.Layer;
+  } | null>(null);
   const userMarkerRef = useRef<L.CircleMarker | null>(null);
   const accuracyCircleRef = useRef<L.Circle | null>(null);
   const watchIdRef = useRef<number | null>(null);
@@ -171,6 +257,19 @@ export default function MapViewer() {
     () => layerOptions.find((layer) => layer.id === activeLayerId) ?? layerOptions[0],
     [activeLayerId],
   );
+
+  function clearSelection() {
+    if (selectedLayerRef.current) {
+      setLayerSelected(
+        selectedLayerRef.current.layer,
+        selectedLayerRef.current.feature,
+        false,
+      );
+      selectedLayerRef.current = null;
+    }
+
+    setSelectedFeature(null);
+  }
 
   useEffect(() => {
     let shouldIgnore = false;
@@ -211,7 +310,7 @@ export default function MapViewer() {
     });
 
     L.control.zoom({ position: "bottomright" }).addTo(map);
-    map.on("click", () => setSelectedFeature(null));
+    map.on("click", clearSelection);
 
     mapRef.current = map;
 
@@ -254,20 +353,31 @@ export default function MapViewer() {
 
     if (routeLayerRef.current) {
       map.removeLayer(routeLayerRef.current);
+      selectedLayerRef.current = null;
+      setSelectedFeature(null);
     }
 
     const routeLayer = L.geoJSON(geoJson, {
-      style: (feature) => ({
-        color: String(feature?.properties?.stroke ?? "#ef4444"),
-        lineCap: "round",
-        lineJoin: "round",
-        opacity: 0.92,
-        weight: 6,
-      }),
+      pointToLayer: (feature, latLng) => {
+        if (!isPointFeature(feature as GeoJsonFeature)) {
+          return L.circleMarker(latLng);
+        }
+
+        return L.marker(latLng, {
+          icon: createPointMarkerIcon(feature as PointFeature),
+          keyboard: true,
+          title: getFeatureName(feature as PointFeature),
+        });
+      },
+      style: (feature) => getFeaturePathStyle(feature as GeoJsonFeature),
       onEachFeature: (feature, layer) => {
         layer.on("click", (event) => {
           L.DomEvent.stopPropagation(event);
-          setSelectedFeature(feature as GeoJsonFeature);
+          const selected = feature as GeoJsonFeature;
+          clearSelection();
+          selectedLayerRef.current = { feature: selected, layer };
+          setLayerSelected(layer, selected, true);
+          setSelectedFeature(selected);
         });
       },
     }).addTo(map);
@@ -354,9 +464,6 @@ export default function MapViewer() {
       setUserLocation(nextLocation);
       setLocationStatus("active");
       setLocationError(null);
-      mapRef.current?.setView([nextLocation.lat, nextLocation.lng], 18, {
-        animate: true,
-      });
     };
 
     const handleLocationError = (error: GeolocationPositionError) => {
@@ -460,7 +567,7 @@ export default function MapViewer() {
               <span
                 className="mt-1 h-4 w-4 shrink-0 rounded-full"
                 style={{
-                  backgroundColor: String(selectedProperties.stroke ?? "#ef4444"),
+                  backgroundColor: getFeatureColor(selectedFeature),
                 }}
               />
               <div className="min-w-0 flex-1">

@@ -43,3 +43,29 @@ select {
 .leaflet-control-attribution {
   font-size: 10px;
 }
+
+.map-marker {
+  background: transparent;
+  border: 0;
+}
+
+.map-marker-icon {
+  align-items: center;
+  border: 3px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 24%);
+  color: #ffffff;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  outline: 1px solid rgb(0 0 0 / 8%);
+  width: 44px;
+}
+
+.map-marker-selected .map-marker-icon {
+  box-shadow:
+    0 0 0 5px rgb(255 255 255 / 80%),
+    0 0 0 9px rgb(17 24 39 / 72%),
+    0 12px 24px rgb(0 0 0 / 30%);
+  transform: scale(1.08);
+}
