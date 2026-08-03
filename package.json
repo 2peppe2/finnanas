@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:https": "next dev --experimental-https -H 0.0.0.0",
+    "build:routing-graph": "node scripts/build-routing-graph.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

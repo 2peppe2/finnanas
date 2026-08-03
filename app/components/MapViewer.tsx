@@ -5,6 +5,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import L from "leaflet";
 import { fallbackMarkerIcon, markerIconByName } from "../constants/markerIcons";
+import { findRouteFromCoordinateToMarker } from "../routing/findRoute";
+import RouteSegmentHighlight from "./RouteSegmentHighlight";
 
 type GeoJsonFeature = {
   type: "Feature";
@@ -133,31 +135,37 @@ function getFeatureColor(feature: GeoJsonFeature | null) {
 
 function getFeaturePathStyle(
   feature: GeoJsonFeature | null | undefined,
-  isSelected = false,
 ): L.PathOptions {
   return {
-    color: isSelected ? "#111827" : getFeatureColor(feature ?? null),
+    color: getFeatureColor(feature ?? null),
     fillColor: String(feature?.properties?.["marker-color"] ?? "#ef4444"),
     fillOpacity: feature?.geometry?.type === "Point" ? 1 : undefined,
     lineCap: "round",
     lineJoin: "round",
-    opacity: isSelected ? 1 : 0.92,
-    weight: isSelected ? 10 : 6,
+    opacity: 0.94,
+    weight: 6,
   };
 }
 
-function setLayerSelected(
-  layer: L.Layer,
-  feature: GeoJsonFeature | null,
-  isSelected: boolean,
-) {
+function getSelectedLineHaloStyle(): L.PathOptions {
+  return {
+    className: "selected-road-halo",
+    color: "#ffffff",
+    interactive: false,
+    lineCap: "round",
+    lineJoin: "round",
+    opacity: 0.95,
+    weight: 14,
+  };
+}
+
+function setLayerSelected(layer: L.Layer, isSelected: boolean) {
   if (layer instanceof L.Marker) {
     layer.getElement()?.classList.toggle("map-marker-selected", isSelected);
     layer.setZIndexOffset(isSelected ? 1000 : 0);
   }
 
   if (layer instanceof L.Path) {
-    layer.setStyle(getFeaturePathStyle(feature, isSelected));
     if (isSelected) {
       layer.bringToFront();
     }
@@ -241,17 +249,21 @@ export default function MapViewer() {
     feature: GeoJsonFeature;
     layer: L.Layer;
   } | null>(null);
+  const selectedHaloRef = useRef<L.GeoJSON | null>(null);
   const userMarkerRef = useRef<L.CircleMarker | null>(null);
   const accuracyCircleRef = useRef<L.Circle | null>(null);
   const watchIdRef = useRef<number | null>(null);
   const [activeLayerId, setActiveLayerId] = useState(layerOptions[0].id);
   const [geoJson, setGeoJson] = useState<GeoJsonData | null>(null);
+  const [leafletMap, setLeafletMap] = useState<L.Map | null>(null);
   const [selectedFeature, setSelectedFeature] = useState<GeoJsonFeature | null>(
     null,
   );
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [locationStatus, setLocationStatus] = useState<LocationStatus>("idle");
   const [locationError, setLocationError] = useState<string | null>(null);
+  const [sheetDragY, setSheetDragY] = useState(0);
+  const sheetDragStartYRef = useRef<number | null>(null);
 
   const activeLayer = useMemo(
     () => layerOptions.find((layer) => layer.id === activeLayerId) ?? layerOptions[0],
@@ -259,16 +271,51 @@ export default function MapViewer() {
   );
 
   function clearSelection() {
+    if (selectedHaloRef.current) {
+      selectedHaloRef.current.remove();
+      selectedHaloRef.current = null;
+    }
+
     if (selectedLayerRef.current) {
-      setLayerSelected(
-        selectedLayerRef.current.layer,
-        selectedLayerRef.current.feature,
-        false,
-      );
+      setLayerSelected(selectedLayerRef.current.layer, false);
       selectedLayerRef.current = null;
     }
 
     setSelectedFeature(null);
+    setSheetDragY(0);
+  }
+
+  function handleSheetPointerDown(event: React.PointerEvent<HTMLElement>) {
+    sheetDragStartYRef.current = event.clientY;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function handleSheetPointerMove(event: React.PointerEvent<HTMLElement>) {
+    if (sheetDragStartYRef.current === null) {
+      return;
+    }
+
+    setSheetDragY(Math.max(0, event.clientY - sheetDragStartYRef.current));
+  }
+
+  function handleSheetPointerEnd(event: React.PointerEvent<HTMLElement>) {
+    if (sheetDragStartYRef.current === null) {
+      return;
+    }
+
+    const dragY = Math.max(0, event.clientY - sheetDragStartYRef.current);
+    sheetDragStartYRef.current = null;
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    if (dragY > 70) {
+      clearSelection();
+      return;
+    }
+
+    setSheetDragY(0);
   }
 
   useEffect(() => {
@@ -313,6 +360,7 @@ export default function MapViewer() {
     map.on("click", clearSelection);
 
     mapRef.current = map;
+    setLeafletMap(map);
 
     return () => {
       map.remove();
@@ -320,6 +368,7 @@ export default function MapViewer() {
         navigator.geolocation.clearWatch(watchIdRef.current);
       }
       mapRef.current = null;
+      setLeafletMap(null);
       tileLayerRef.current = null;
       routeLayerRef.current = null;
       userMarkerRef.current = null;
@@ -354,6 +403,7 @@ export default function MapViewer() {
     if (routeLayerRef.current) {
       map.removeLayer(routeLayerRef.current);
       selectedLayerRef.current = null;
+      selectedHaloRef.current = null;
       setSelectedFeature(null);
     }
 
@@ -375,8 +425,14 @@ export default function MapViewer() {
           L.DomEvent.stopPropagation(event);
           const selected = feature as GeoJsonFeature;
           clearSelection();
+          if (isLineStringFeature(selected)) {
+            selectedHaloRef.current = L.geoJSON(selected, {
+              style: getSelectedLineHaloStyle,
+            }).addTo(map);
+            selectedHaloRef.current.bringToBack();
+          }
           selectedLayerRef.current = { feature: selected, layer };
-          setLayerSelected(layer, selected, true);
+          setLayerSelected(layer, true);
           setSelectedFeature(selected);
         });
       },
@@ -498,15 +554,34 @@ export default function MapViewer() {
   const selectedName = formatPropertyValue(selectedProperties.name);
   const propertyEntries = Object.entries(selectedProperties);
   const distanceToSelected = closestDistanceToFeature(userLocation, selectedFeature);
-  const guidanceText =
-    distanceToSelected === null
-      ? null
-      : distanceToSelected <= 15
-        ? `Du är vid ${selectedName}`
-        : `Gå ca ${formatDistance(distanceToSelected)} till ${selectedName}`;
+  const isSelectedPoint = isPointFeature(selectedFeature);
+  const routeResult = useMemo(() => {
+    if (!userLocation || !isPointFeature(selectedFeature)) {
+      return null;
+    }
+
+    return findRouteFromCoordinateToMarker(
+      [userLocation.lng, userLocation.lat],
+      getFeatureName(selectedFeature),
+    );
+  }, [selectedFeature, userLocation]);
+  const guidanceText = routeResult
+    ? `Följ rutten ${formatDistance(routeResult.distanceMeters)} till ${selectedName}`
+    : isSelectedPoint && userLocation
+      ? `Ingen rutt hittades till ${selectedName}`
+      : distanceToSelected === null
+        ? null
+        : distanceToSelected <= 15
+          ? `Du är vid ${selectedName}`
+          : `Gå ca ${formatDistance(distanceToSelected)} till ${selectedName}`;
 
   return (
     <main className="relative h-[100svh] w-full overflow-hidden bg-stone-100">
+      <RouteSegmentHighlight
+        map={leafletMap}
+        segmentIds={routeResult?.segmentIds ?? []}
+        coordinates={routeResult?.coordinates}
+      />
       <div ref={mapElementRef} className="h-full w-full" aria-label="Finnasnäs map" />
 
       <header className="pointer-events-none absolute left-0 right-0 top-0 z-[500] px-4 pt-[max(1rem,env(safe-area-inset-top))]">
@@ -549,16 +624,27 @@ export default function MapViewer() {
       </div>
 
       <section
-        className={`absolute inset-x-0 bottom-0 z-[600] rounded-t-[28px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-16px_48px_rgba(0,0,0,0.20)] transition-transform duration-300 ease-out ${
+        className={`absolute inset-x-0 bottom-0 z-[600] touch-pan-y rounded-t-[28px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-16px_48px_rgba(0,0,0,0.20)] ${
+          sheetDragY > 0 ? "" : "transition-transform duration-300 ease-out"
+        } ${
           selectedFeature ? "translate-y-0" : "translate-y-[calc(100%+2rem)]"
         }`}
+        style={{
+          transform: selectedFeature
+            ? `translateY(${sheetDragY}px)`
+            : undefined,
+        }}
         aria-hidden={!selectedFeature}
+        onPointerCancel={handleSheetPointerEnd}
+        onPointerDown={handleSheetPointerDown}
+        onPointerMove={handleSheetPointerMove}
+        onPointerUp={handleSheetPointerEnd}
       >
         <button
           type="button"
           className="mx-auto mb-3 block h-1.5 w-12 rounded-full bg-stone-300"
           aria-label="Close details"
-          onClick={() => setSelectedFeature(null)}
+          onClick={clearSelection}
         />
 
         {selectedFeature ? (
@@ -609,6 +695,23 @@ export default function MapViewer() {
                 <p className="mt-2 text-sm text-amber-200">
                   {locationError ?? "GPS kunde inte hämtas."}
                 </p>
+              ) : null}
+              {routeResult ? (
+                <ol className="mt-3 space-y-1 border-t border-white/15 pt-3">
+                  {routeResult.steps.map((step) => (
+                    <li
+                      key={step.edgeId}
+                      className="flex items-center justify-between gap-3 text-sm"
+                    >
+                      <span className="truncate text-stone-100">
+                        {step.edgeId}
+                      </span>
+                      <span className="shrink-0 text-stone-300">
+                        {formatDistance(step.distanceMeters)}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               ) : null}
             </div>
 
