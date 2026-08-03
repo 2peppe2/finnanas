@@ -3,7 +3,7 @@
   "features": [
     {
       "properties": {
-        "name": "Everts väg",
+        "name": "Gustafs väg",
         "stroke": "#FF1493"
       },
       "geometry": {
@@ -110,6 +110,10 @@
         "type": "LineString",
         "coordinates": [
           [
+          14.826077,
+          57.984484
+        ],
+          [
             14.826079308986664,
             57.98433450432976
           ],
@@ -150,8 +154,8 @@
             57.98499287321185
           ],
           [
-            14.827385544776918,
-            57.98472838954261
+            14.82661306858063,
+          57.984998561011245
           ]
         ]
       },
@@ -165,6 +169,7 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
+          
           [
             14.827385544776918,
             57.98472838954261
@@ -185,6 +190,7 @@
             14.82707977294922,
             57.98475540678114
           ],
+          
           [
             14.827055633068086,
             57.984790955748196
@@ -205,6 +211,7 @@
             14.826867878437044,
             57.98492035369037
           ],
+          
           [
             14.826822280883789,
             57.98494026102461
@@ -213,14 +220,16 @@
             14.826774001121523,
             57.98497296590685
           ],
+          
           [
             14.82672840356827,
             57.98499571711164
           ],
           [
-            14.826639890670778,
-            57.98500424880972
-          ],
+          14.82661306858063,
+          57.984998561011245
+        ],
+          
           [
             14.826537966728212,
             57.985032687788646
@@ -252,6 +261,10 @@
           [
             14.82607662677765,
             57.98529290339734
+          ],
+          [
+            14.826052,
+            57.985320
           ]
         ]
       },
@@ -342,7 +355,7 @@
         "type": "LineString",
         "coordinates": [
           [
-            14.828520,
+            14.82852,
             57.985296
           ],
           [
@@ -463,7 +476,7 @@
     },
     {
       "properties": {
-        "name": "Alvas",
+        "name": "Alvas väg",
         "stroke": "#228B22"
       },
       "geometry": {
@@ -517,6 +530,7 @@
             14.828428924083711,
             57.98474971894315
           ],
+          
           [
             14.828479886054993,
             57.98479948749504
@@ -579,7 +593,6 @@
       },
       "type": "Feature"
     },
-    
     {
       "properties": {
         "name": "Mellan huset och ladan",
@@ -621,9 +634,9 @@
             57.98571806035209
           ],
           [
-            14.829874634742737,
-            57.98575360836386
-          ]
+          14.829874634742737,
+          57.9857550302836
+        ]
         ]
       },
       "type": "Feature"
@@ -679,6 +692,10 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
+          [
+          14.826079308986664,
+          57.98433450432976
+        ],
           [
             14.826020300388338,
             57.984306064796584
@@ -748,16 +765,8 @@
             57.98442124476654
           ],
           [
-            14.827168285846712,
-            57.984496609237794
-          ],
-          [
-            14.827181696891786,
-            57.98457481748375
-          ],
-          [
-            14.827407002449037,
-            57.98472270170031
+            14.827189743518831,
+            57.9844311985737
           ]
         ]
       }
@@ -792,7 +801,7 @@
           ],
           [
             14.827101,
-            57.984280
+            57.98428
           ]
         ]
       },
@@ -828,7 +837,7 @@
     },
     {
       "properties": {
-        "name": "Grangläntan",
+        "name": "Ekgläntan",
         "marker-color": "#DC143C"
       },
       "geometry": {
@@ -840,9 +849,37 @@
       },
       "type": "Feature"
     },
+     {
+      "properties": {
+        "name": "Trollet",
+        "marker-color": "#DC143C"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.827420413494112,
+          57.98438427345853
+        ]
+      },
+      "type": "Feature"
+    },
     {
       "properties": {
-        "name": "Alvas väg",
+        "name": "Paddocken",
+        "marker-color": "#DC143C"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.827734231948854,
+          57.984439730406244
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "name": "Unknown väg",
         "stroke": "#9932CC"
       },
       "geometry": {
@@ -865,9 +902,10 @@
             57.985193367595386
           ],
           [
-            14.827125370502472,
-            57.98516635068712
+            14.827144145965578,
+            57.985154975140716
           ],
+          
           [
             14.827063679695131,
             57.98512084847982
@@ -877,6 +915,10 @@
             57.985068236480544
           ],
           [
+14.826951026916504,
+          57.985035531685305
+          ],
+          [
             14.82696980237961,
             57.98504832921743
           ],
@@ -884,6 +926,7 @@
             14.826875925064089,
             57.98506254869222
           ],
+          
           [
             14.826747179031374,
             57.98504121947791
@@ -946,7 +989,7 @@
     },
     {
       "properties": {
-        "name": "Unknown",
+        "name": "Aspgläntan",
         "marker-color": "#DC143C"
       },
       "geometry": {
@@ -960,7 +1003,7 @@
     },
     {
       "properties": {
-        "name": "Unknown 2",
+        "name": "Grangläntan",
         "marker-color": "#DC143C"
       },
       "geometry": {
@@ -974,7 +1017,7 @@
     },
     {
       "properties": {
-        "name": "Uknown road",
+        "name": "Lowes väg",
         "stroke": "#DC143C"
       },
       "geometry": {
@@ -1017,24 +1060,58 @@
             57.98487058530641
           ],
           [
-            14.82769936323166,
-            57.984907556112525
+            14.827707409858705,
+            57.984893336576214
+          ]
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "name": "Lydias väg",
+        "stroke": "#1E90FF"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          
+          
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "name": "Unknown road 2",
+        "stroke": "#DC143C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.826951026916504,
+            57.985035531685305
           ],
           [
-            14.827632308006288,
-            57.9849104000191
+            14.826951026916518,
+            57.985035531685305
           ],
           [
-            14.827557206153871,
-            57.98487911703427
+            14.82707440853119,
+            57.98492461954863
           ],
           [
-            14.827476739883423,
-            57.984843568154695
+            14.827117323875429,
+            57.98487058530641
           ],
           [
-            14.82744723558426,
-            57.98480659728255
+            14.827187061309816,
+            57.98482792663653
+          ],
+          [
+            14.827262163162233,
+            57.984788111832124
           ],
           [
             14.827385544776918,
@@ -1046,8 +1123,62 @@
     },
     {
       "properties": {
-        "name": "Lydias väg",
-        "stroke": "#1E90FF"
+        "name": "Majs väg",
+        "stroke": "#DC143C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+          14.82748478651047,
+          57.98505686090297
+        ],
+          [
+            14.827433824539185,
+            57.98502131219978
+          ],
+          [
+            14.827388226985931,
+            57.98498860736171
+          ],
+          [
+            14.82732117176056,
+            57.98493315126367
+          ],
+          [
+            14.827278256416323,
+            57.98486631944169
+          ],
+          [
+            14.827310442924501,
+            57.98482650467999
+          ],
+          [
+            14.827385544776918,
+            57.98472838954261
+          ]
+  ]
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "name": "Rönngläntan",
+        "marker-color": "#DC143C"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.826951026916504,
+          57.985035531685305
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "name": "Everts väg",
+        "stroke": "#DC143C"
       },
       "geometry": {
         "type": "LineString",
@@ -1117,96 +1248,6 @@
             57.98505401700802
           ],
           [
-            14.827433824539185,
-            57.98502131219978
-          ],
-          [
-            14.827388226985931,
-            57.98498860736171
-          ],
-          [
-            14.82732117176056,
-            57.98493315126367
-          ],
-          [
-            14.827278256416323,
-            57.98486631944169
-          ],
-          [
-            14.827310442924501,
-            57.98482650467999
-          ],
-          [
-            14.827385544776918,
-            57.98472838954261
-          ]
-        ]
-      },
-      "type": "Feature"
-    },
-    {
-      "properties": {
-        "name": "Unknown road 2",
-        "stroke": "#DC143C"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-          14.826951026916504,
-          57.985035531685305
-        ],
-          [
-            14.826951026916518,
-            57.985035531685305
-          ],
-          [
-            14.82707440853119,
-            57.98492461954863
-          ],
-          [
-            14.827117323875429,
-            57.98487058530641
-          ],
-          [
-            14.827187061309816,
-            57.98482792663653
-          ],
-          [
-            14.827262163162233,
-            57.984788111832124
-          ],
-          [
-            14.827385544776918,
-            57.98472838954261
-          ]
-        ]
-      },
-      "type": "Feature"
-    },
-    {
-      "properties": {
-        "name": "Unkown 3",
-        "marker-color": "#DC143C"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          14.826951026916504,
-          57.985035531685305
-        ]
-      },
-      "type": "Feature"
-    },
-    {
-      "properties": {
-        "name": "Unkown road 3",
-        "stroke": "#DC143C"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
             14.82748478651047,
             57.98505686090297
           ],
@@ -1235,12 +1276,328 @@
             57.985035531685305
           ],
           [
-           14.828378,
-            57.985060
+            14.828378,
+            57.98506
           ]
         ]
       },
       "type": "Feature"
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Vägen till Svinhuset",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Vägen till Svinhuset"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.828732,
+          57.985306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Ruths och Jolines väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Ruths väg",
+          "Jolines väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            14.827189743518831,
+            57.9844311985737
+          ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Johannas väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Johannas väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            14.826052,
+            57.985320
+        ]
+      }
+    },
+    {
+      "properties": {
+        "name": "Lydias väg",
+        "stroke": "#DC143C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+          14.827385544776918,
+          57.98472838954261
+        ],
+          [
+            14.827382862567903,
+            57.98475540678114
+          ],
+          [
+            14.827506244182588,
+            57.98482650467999
+          ],
+          [
+            14.827557206153871,
+            57.98486631944169
+          ],
+          [
+          14.827707409858705,
+          57.984893336576214
+        ]
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "name": "Ruths väg",
+        "stroke": "#DC143C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+          14.827667176723482,
+          57.98433450432976
+        ],
+          [
+          14.827420413494112,
+          57.98438427345853
+        ],
+          [
+            14.827267527580263,
+            57.98439991517041
+          ],
+          [
+            14.827189743518831,
+            57.9844311985737
+          ],
+          [
+            14.827157557010652,
+            57.984478123627454
+          ],
+          [
+            14.827184379100801,
+            57.984557753881006
+          ],
+          [
+            14.827229976654055,
+            57.98461178859512
+          ],
+          [
+            14.827329218387606,
+            57.98466440126476
+          ],
+          [
+          14.827385544776918,
+          57.98472838954261
+        ]
+        ]
+      },
+      "type": "Feature"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Berndts väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Berndts väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.82852,
+          57.985296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Alvas",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Alvas"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.828413,
+          57.984885
+        ]
+      }
+    },
+    
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Leonis väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Leonis väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.827101,
+          57.98428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Alvas väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Alvas väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.827441871166231,
+          57.985371109904875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Levis väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Levis väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.82632875442505,
+          57.98534978087427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Lydias väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Lydias väg"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.826661348342897,
+          57.98540239246009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Unkown road 3",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Unkown road 3"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.82748478651047,
+          57.98505686090297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Unkown road 3",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Unkown road 3"
+        ],
+        "degree": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.828378,
+          57.98506
+        ]
+      }
+    },
+    
+    
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Junction: Alvas väg / Lydias väg",
+        "marker-color": "#2563EB",
+        "junction": true,
+        "roads": [
+          "Alvas väg",
+          "Lydias väg"
+        ],
+        "degree": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.827144145965578,
+          57.985154975140716
+        ]
+      }
     }
   ]
 }

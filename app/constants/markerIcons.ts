@@ -9,6 +9,7 @@ import {
   TreePine,
   TentTree,
   type LucideIcon,
+  Waypoints,
   WavesHorizontal,
 } from "lucide-react";
 
@@ -28,3 +29,11 @@ export const markerIconByName = {
 } as const satisfies Record<string, LucideIcon>;
 
 export const fallbackMarkerIcon = CircleHelp;
+
+export function getMarkerIcon(markerName: string) {
+  if (markerName.startsWith("Junction:")) {
+    return Waypoints;
+  }
+
+  return markerIconByName[markerName as keyof typeof markerIconByName] ?? fallbackMarkerIcon;
+}

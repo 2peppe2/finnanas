@@ -82,7 +82,7 @@ type GraphNodeDraft = {
 };
 
 const coordinatePrecision = 7;
-const junctionToleranceMeters = 1.5;
+const markerJunctionToleranceMeters = 5;
 const minimumSegmentLengthMeters = 2;
 
 function isCoordinate(value: unknown): value is Coordinate {
@@ -391,6 +391,7 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
     )
     .map((feature, index) => ({
       coordinate: feature.geometry?.coordinates as Coordinate,
+      isJunction: feature.properties?.junction === true,
       markerName: getFeatureName(feature, `Marker ${index}`),
     }));
   const splitPointsByLine = new Map<LineFeature, Map<number, Coordinate[]>>();
@@ -406,20 +407,11 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
     splitPointsByLine.set(line, splitPoints);
   }
 
-  const candidatePoints = [
-    ...lines.flatMap((line) =>
-      line.coordinates.map((coordinate) => ({
-        coordinate,
-        featureIndex: line.featureIndex,
-        roadName: line.roadName,
-      })),
-    ),
-    ...pointMarkers.map((marker) => ({
-      coordinate: marker.coordinate,
-      featureIndex: -1,
-      roadName: marker.markerName,
-    })),
-  ];
+  const candidatePoints = pointMarkers.filter((marker) => marker.isJunction);
+  const canonicalNodeCoordinateBySplitKey = new Map<string, Coordinate>();
+
+  const getNodeCoordinate = (coordinate: Coordinate) =>
+    canonicalNodeCoordinateBySplitKey.get(coordinateKey(coordinate)) ?? coordinate;
 
   for (const line of lines) {
     const splitPoints = splitPointsByLine.get(line);
@@ -432,18 +424,32 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
       const end = line.coordinates[segmentIndex + 1];
 
       for (const candidate of candidatePoints) {
-        if (candidate.featureIndex === line.featureIndex) {
-          continue;
-        }
-
         const projection = projectedPointOnSegment(candidate.coordinate, start, end);
         if (
           projection &&
           projection.position >= -0.0001 &&
           projection.position <= 1.0001 &&
-          projection.distance <= junctionToleranceMeters
+          projection.distance <= markerJunctionToleranceMeters
         ) {
-          insertSortedSplitPoint(splitPoints, segmentIndex, projection.coordinate);
+          const startDistance = distanceMeters(projection.coordinate, start);
+          const endDistance = distanceMeters(projection.coordinate, end);
+          const splitCoordinate =
+            startDistance < minimumSegmentLengthMeters
+              ? start
+              : endDistance < minimumSegmentLengthMeters
+                ? end
+                : candidate.coordinate;
+
+          canonicalNodeCoordinateBySplitKey.set(
+            coordinateKey(splitCoordinate),
+            candidate.coordinate,
+          );
+
+          insertSortedSplitPoint(
+            splitPoints,
+            segmentIndex,
+            splitCoordinate,
+          );
         }
       }
     }
@@ -490,7 +496,7 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
         if (pendingFrom === null) {
           pendingCoordinates = [coordinate];
           if (isBreakpoint) {
-            pendingFrom = addNode(nodes, coordinate, line.roadName);
+            pendingFrom = addNode(nodes, getNodeCoordinate(coordinate), line.roadName);
           }
           continue;
         }
@@ -504,7 +510,7 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
           continue;
         }
 
-        const nodeId = addNode(nodes, coordinate, line.roadName);
+        const nodeId = addNode(nodes, getNodeCoordinate(coordinate), line.roadName);
         if (nodeId === pendingFrom) {
           continue;
         }
@@ -527,17 +533,15 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
       }
     }
 
-    const normalizedSegments = normalizeSplitRoadSegments(line, splitRoadSegments);
-
     splitRoads.push({
       featureIndex: line.featureIndex,
       originalCoordinates: line.coordinates,
       roadName: line.roadName,
-      totalDistanceMeters: normalizedSegments.reduce(
+      totalDistanceMeters: splitRoadSegments.reduce(
         (sum, segment) => sum + segment.distanceMeters,
         0,
       ),
-      segments: normalizedSegments,
+      segments: splitRoadSegments,
     });
   }
 
@@ -545,12 +549,22 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
     addNode(nodes, marker.coordinate, undefined, marker.markerName);
   }
 
-  const nodeList = [...nodes.entries()].map(([id, node]) => ({
-    coordinate: node.coordinate,
-    id,
-    markerNames: [...node.markerNames].sort(),
-    roadNames: [...node.roadNames].sort(),
-  }));
+  for (const road of splitRoads) {
+    road.segments = normalizeSplitRoadSegments(
+      lines.find((line) => line.featureIndex === road.featureIndex) ?? {
+        coordinates: road.originalCoordinates,
+        feature: { type: "Feature" },
+        featureIndex: road.featureIndex,
+        roadName: road.roadName,
+      },
+      road.segments,
+    );
+    road.totalDistanceMeters = road.segments.reduce(
+      (sum, segment) => sum + segment.distanceMeters,
+      0,
+    );
+  }
+
   const degreeByNode = new Map<string, number>();
   const edges = splitRoads.flatMap((road) => road.segments);
 
@@ -558,6 +572,17 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
     degreeByNode.set(edge.from, (degreeByNode.get(edge.from) ?? 0) + 1);
     degreeByNode.set(edge.to, (degreeByNode.get(edge.to) ?? 0) + 1);
   }
+
+  const nodeList = [...nodes.entries()]
+    .map(([id, node]) => ({
+      coordinate: node.coordinate,
+      id,
+      markerNames: [...node.markerNames].sort(),
+      roadNames: [...node.roadNames].sort(),
+    }))
+    .filter(
+      (node) => node.markerNames.length > 0 || (degreeByNode.get(node.id) ?? 0) > 0,
+    );
 
   const junctions = nodeList
     .map((node) => ({

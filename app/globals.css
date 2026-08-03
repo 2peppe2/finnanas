@@ -49,6 +49,20 @@ select {
   border: 0;
 }
 
+.map-junction-marker {
+  background: transparent;
+  border: 0;
+}
+
+.map-junction-dot {
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 24%);
+  height: 12px;
+  width: 12px;
+}
+
 .map-marker-icon {
   align-items: center;
   border: 3px solid #ffffff;

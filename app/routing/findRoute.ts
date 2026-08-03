@@ -247,6 +247,20 @@ export function findMarkerRoutingNode(markerName: string) {
   );
 }
 
+export function getConnectedSegmentsForMarker(markerName: string) {
+  const node = findMarkerRoutingNode(markerName);
+
+  if (!node) {
+    return [];
+  }
+
+  return (adjacency.get(node.id) ?? []).map(({ edge }) => edge);
+}
+
+export function getSegmentsForRoad(roadName: string) {
+  return graph.edges.filter((edge) => edge.roadName === roadName);
+}
+
 export function findRouteBetweenNodes(
   fromNodeId: string,
   toNodeId: string,

@@ -4,8 +4,12 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import L from "leaflet";
-import { fallbackMarkerIcon, markerIconByName } from "../constants/markerIcons";
-import { findRouteFromCoordinateToMarker } from "../routing/findRoute";
+import { getMarkerIcon } from "../constants/markerIcons";
+import {
+  findRouteFromCoordinateToMarker,
+  getConnectedSegmentsForMarker,
+  getSegmentsForRoad,
+} from "../routing/findRoute";
 import RouteSegmentHighlight from "./RouteSegmentHighlight";
 
 type GeoJsonFeature = {
@@ -107,8 +111,17 @@ function getFeatureName(feature: GeoJsonFeature | null) {
 
 function createPointMarkerIcon(feature: PointFeature) {
   const markerName = getFeatureName(feature);
-  const Icon =
-    markerIconByName[markerName as keyof typeof markerIconByName] ?? fallbackMarkerIcon;
+  if (feature.properties?.junction === true) {
+    return L.divIcon({
+      className: "map-junction-marker",
+      html: '<div class="map-junction-dot"></div>',
+      iconAnchor: [6, 6],
+      iconSize: [12, 12],
+      popupAnchor: [0, -6],
+    });
+  }
+
+  const Icon = getMarkerIcon(markerName);
   const markerColor = String(feature.properties?.["marker-color"] ?? "#dc143c");
   const iconMarkup = renderToStaticMarkup(
     <div className="map-marker-icon" style={{ backgroundColor: markerColor }}>
@@ -565,6 +578,21 @@ export default function MapViewer() {
       getFeatureName(selectedFeature),
     );
   }, [selectedFeature, userLocation]);
+  const connectedSegments = useMemo(() => {
+    if (!selectedFeature) {
+      return [];
+    }
+
+    if (isPointFeature(selectedFeature)) {
+      return getConnectedSegmentsForMarker(getFeatureName(selectedFeature));
+    }
+
+    if (isLineStringFeature(selectedFeature)) {
+      return getSegmentsForRoad(getFeatureName(selectedFeature));
+    }
+
+    return [];
+  }, [selectedFeature]);
   const guidanceText = routeResult
     ? `Följ rutten ${formatDistance(routeResult.distanceMeters)} till ${selectedName}`
     : isSelectedPoint && userLocation
@@ -712,6 +740,28 @@ export default function MapViewer() {
                     </li>
                   ))}
                 </ol>
+              ) : null}
+              {connectedSegments.length > 0 ? (
+                <div className="mt-3 border-t border-white/15 pt-3">
+                  <p className="text-xs font-medium uppercase tracking-wide text-stone-400">
+                    Connected segments
+                  </p>
+                  <ol className="mt-2 space-y-1">
+                    {connectedSegments.map((segment) => (
+                      <li
+                        key={segment.id}
+                        className="flex items-center justify-between gap-3 text-sm"
+                      >
+                        <span className="truncate text-stone-100">
+                          {segment.id}
+                        </span>
+                        <span className="shrink-0 text-stone-300">
+                          {formatDistance(segment.distanceMeters)}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               ) : null}
             </div>
 
