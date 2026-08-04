@@ -11,6 +11,11 @@ import {
   type LucideIcon,
   Waypoints,
   WavesHorizontal,
+  Trees,
+  Sprout,
+  Leaf,
+  Skull,
+  ChessKnight,
 } from "lucide-react";
 
 export const markerIconByName = {
@@ -26,6 +31,11 @@ export const markerIconByName = {
   "Unknown 2": CircleHelp,
   "Unkown 3": CircleHelp,
   "Jarls bro": Road,
+  "Ekgläntan": Trees,
+  "Rönngläntan": Sprout,
+  "Aspgläntan": Leaf,
+  "Trollet": Skull, 
+  "Paddocken": ChessKnight,
 } as const satisfies Record<string, LucideIcon>;
 
 export const fallbackMarkerIcon = CircleHelp;

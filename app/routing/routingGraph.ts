@@ -83,6 +83,7 @@ type GraphNodeDraft = {
 
 const coordinatePrecision = 7;
 const markerJunctionToleranceMeters = 5;
+const roadMarkerToleranceMeters = 0.25;
 const minimumSegmentLengthMeters = 2;
 
 function isCoordinate(value: unknown): value is Coordinate {
@@ -453,6 +454,66 @@ export function buildRoutingGraph(geoJson: RoutingGeoJson): RoutingGraph {
         }
       }
     }
+  }
+
+  for (const marker of pointMarkers.filter((pointMarker) => !pointMarker.isJunction)) {
+    let nearest:
+      | {
+          line: LineFeature;
+          segmentIndex: number;
+          splitCoordinate: Coordinate;
+          distance: number;
+        }
+      | null = null;
+
+    for (const line of lines) {
+      for (let segmentIndex = 0; segmentIndex < line.coordinates.length - 1; segmentIndex += 1) {
+        const start = line.coordinates[segmentIndex];
+        const end = line.coordinates[segmentIndex + 1];
+        const projection = projectedPointOnSegment(marker.coordinate, start, end);
+
+        if (!projection || projection.distance > roadMarkerToleranceMeters) {
+          continue;
+        }
+
+        const startDistance = distanceMeters(projection.coordinate, start);
+        const endDistance = distanceMeters(projection.coordinate, end);
+        const splitCoordinate =
+          startDistance < minimumSegmentLengthMeters
+            ? start
+            : endDistance < minimumSegmentLengthMeters
+              ? end
+              : marker.coordinate;
+
+        if (!nearest || projection.distance < nearest.distance) {
+          nearest = {
+            distance: projection.distance,
+            line,
+            segmentIndex,
+            splitCoordinate,
+          };
+        }
+      }
+    }
+
+    if (!nearest) {
+      continue;
+    }
+
+    const splitPoints = splitPointsByLine.get(nearest.line);
+    if (!splitPoints) {
+      continue;
+    }
+
+    canonicalNodeCoordinateBySplitKey.set(
+      coordinateKey(nearest.splitCoordinate),
+      marker.coordinate,
+    );
+    insertSortedSplitPoint(
+      splitPoints,
+      nearest.segmentIndex,
+      nearest.splitCoordinate,
+    );
   }
 
   const nodes = new Map<string, GraphNodeDraft>();

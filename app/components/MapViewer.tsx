@@ -4,12 +4,15 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import L from "leaflet";
+import { Menu, X } from "lucide-react";
 import { getMarkerIcon } from "../constants/markerIcons";
 import {
   findRouteFromCoordinateToMarker,
   getConnectedSegmentsForMarker,
   getSegmentsForRoad,
 } from "../routing/findRoute";
+import routingGraph from "../routing/routing-graph.generated.json";
+import type { RoutingEdge } from "../routing/routingGraph";
 import RouteSegmentHighlight from "./RouteSegmentHighlight";
 
 type GeoJsonFeature = {
@@ -89,6 +92,7 @@ const layerOptions: LayerOption[] = [
 ];
 
 const defaultCenter: L.LatLngExpression = [57.9853, 14.828];
+const routingSegments = routingGraph.edges as RoutingEdge[];
 
 function isLineStringFeature(feature: GeoJsonFeature | null): feature is LineStringFeature {
   return (
@@ -275,6 +279,8 @@ export default function MapViewer() {
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [locationStatus, setLocationStatus] = useState<LocationStatus>("idle");
   const [locationError, setLocationError] = useState<string | null>(null);
+  const [isSegmentMenuOpen, setIsSegmentMenuOpen] = useState(false);
+  const [highlightedSegmentIds, setHighlightedSegmentIds] = useState<string[]>([]);
   const [sheetDragY, setSheetDragY] = useState(0);
   const sheetDragStartYRef = useRef<number | null>(null);
 
@@ -329,6 +335,14 @@ export default function MapViewer() {
     }
 
     setSheetDragY(0);
+  }
+
+  function toggleHighlightedSegment(segmentId: string) {
+    setHighlightedSegmentIds((currentSegmentIds) =>
+      currentSegmentIds.includes(segmentId)
+        ? currentSegmentIds.filter((currentSegmentId) => currentSegmentId !== segmentId)
+        : [...currentSegmentIds, segmentId],
+    );
   }
 
   useEffect(() => {
@@ -610,16 +624,20 @@ export default function MapViewer() {
         segmentIds={routeResult?.segmentIds ?? []}
         coordinates={routeResult?.coordinates}
       />
-      <div ref={mapElementRef} className="h-full w-full" aria-label="Finnasnäs map" />
+      <RouteSegmentHighlight
+        map={leafletMap}
+        segmentIds={highlightedSegmentIds}
+      />
+      <div ref={mapElementRef} className="h-full w-full" aria-label="Finnanäs map" />
 
       <header className="pointer-events-none absolute left-0 right-0 top-0 z-[500] px-4 pt-[max(1rem,env(safe-area-inset-top))]">
         <div className="flex items-start justify-between gap-3">
           <div className="rounded-lg bg-white/92 px-3 py-2 shadow-lg shadow-black/10 backdrop-blur">
             <p className="text-xs font-medium uppercase tracking-wide text-stone-500">
-              Finnasnäs
+              Finnanäs
             </p>
             <h1 className="text-lg font-semibold leading-tight text-stone-950">
-              Finnasnäs map
+              Finnanäs map
             </h1>
           </div>
 
@@ -642,14 +660,92 @@ export default function MapViewer() {
       </header>
 
       <div className="absolute right-4 top-[calc(max(1rem,env(safe-area-inset-top))+5.25rem)] z-[500]">
-        <button
-          type="button"
-          className="rounded-lg bg-white/95 px-3 py-2 text-sm font-semibold text-stone-950 shadow-lg shadow-black/10 backdrop-blur"
-          onClick={startLocation}
-        >
-          {locationStatus === "loading" ? "Hämtar GPS" : "Min plats"}
-        </button>
+        <div className="flex flex-col gap-2">
+          <button
+            type="button"
+            className="rounded-lg bg-white/95 px-3 py-2 text-sm font-semibold text-stone-950 shadow-lg shadow-black/10 backdrop-blur"
+            onClick={startLocation}
+          >
+            {locationStatus === "loading" ? "Hämtar GPS" : "Min plats"}
+          </button>
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/95 text-stone-950 shadow-lg shadow-black/10 backdrop-blur"
+            aria-label="Open segment checklist"
+            aria-expanded={isSegmentMenuOpen}
+            onClick={() => setIsSegmentMenuOpen(true)}
+          >
+            <Menu aria-hidden="true" size={22} strokeWidth={2.5} />
+          </button>
+        </div>
       </div>
+
+      {isSegmentMenuOpen ? (
+        <section className="absolute inset-x-0 bottom-0 z-[650] max-h-[72svh] rounded-t-[24px] bg-white px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-16px_48px_rgba(0,0,0,0.24)]">
+          <div className="mx-auto max-w-2xl">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-stone-500">
+                  Highlight
+                </p>
+                <h2 className="text-xl font-semibold text-stone-950">
+                  Road segments
+                </h2>
+              </div>
+              <button
+                type="button"
+                className="flex h-10 w-10 items-center justify-center rounded-lg bg-stone-100 text-stone-950"
+                aria-label="Close segment checklist"
+                onClick={() => setIsSegmentMenuOpen(false)}
+              >
+                <X aria-hidden="true" size={22} strokeWidth={2.5} />
+              </button>
+            </div>
+
+            <div className="mb-3 flex items-center justify-between gap-3 rounded-lg bg-stone-100 px-3 py-2">
+              <p className="text-sm font-medium text-stone-700">
+                {highlightedSegmentIds.length} selected
+              </p>
+              <button
+                type="button"
+                className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-950 shadow-sm"
+                onClick={() => setHighlightedSegmentIds([])}
+              >
+                Clear
+              </button>
+            </div>
+
+            <div className="max-h-[52svh] overflow-y-auto pr-1">
+              <ol className="space-y-2">
+                {routingSegments.map((segment) => {
+                  const isChecked = highlightedSegmentIds.includes(segment.id);
+
+                  return (
+                    <li key={segment.id}>
+                      <label className="flex items-center gap-3 rounded-lg border border-stone-200 bg-white px-3 py-3 shadow-sm">
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleHighlightedSegment(segment.id)}
+                          className="h-5 w-5 accent-blue-600"
+                        />
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate text-sm font-semibold text-stone-950">
+                            {segment.id}
+                          </span>
+                          <span className="block text-xs text-stone-500">
+                            {formatDistance(segment.distanceMeters)}
+                          </span>
+                        </span>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section
         className={`absolute inset-x-0 bottom-0 z-[600] touch-pan-y rounded-t-[28px] bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-16px_48px_rgba(0,0,0,0.20)] ${

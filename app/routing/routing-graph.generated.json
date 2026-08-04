@@ -69,11 +69,11 @@
           57.98535689055258
         ],
         [
-          14.827471375465395,
-          57.98537395377464
+          14.827538430690767,
+          57.98536968796989
         ]
       ],
-      "distanceMeters": 61.4654493774709,
+      "distanceMeters": 57.49064027267066,
       "difficulty": 1,
       "featureIndex": 0,
       "from": "14.8285200,57.9852960",
@@ -82,6 +82,28 @@
       "sourceSegmentIndexes": [
         4,
         5,
+        6
+      ],
+      "to": "14.8275384,57.9853697"
+    },
+    {
+      "coordinates": [
+        [
+          14.827538430690767,
+          57.98536968796989
+        ],
+        [
+          14.827471375465395,
+          57.98537395377464
+        ]
+      ],
+      "distanceMeters": 3.9811571533783137,
+      "difficulty": 1,
+      "featureIndex": 0,
+      "from": "14.8275384,57.9853697",
+      "id": "Gustafs väg-4",
+      "roadName": "Gustafs väg",
+      "sourceSegmentIndexes": [
         6
       ],
       "to": "14.8274419,57.9853711"
@@ -109,7 +131,7 @@
       "difficulty": 1,
       "featureIndex": 0,
       "from": "14.8274419,57.9853711",
-      "id": "Gustafs väg-4",
+      "id": "Gustafs väg-5",
       "roadName": "Gustafs väg",
       "sourceSegmentIndexes": [
         7,
@@ -137,7 +159,7 @@
       "difficulty": 1,
       "featureIndex": 0,
       "from": "14.8266613,57.9854024",
-      "id": "Gustafs väg-5",
+      "id": "Gustafs väg-6",
       "roadName": "Gustafs väg",
       "sourceSegmentIndexes": [
         10,
@@ -164,7 +186,7 @@
       "difficulty": 1,
       "featureIndex": 0,
       "from": "14.8263288,57.9853498",
-      "id": "Gustafs väg-6",
+      "id": "Gustafs väg-7",
       "roadName": "Gustafs väg",
       "sourceSegmentIndexes": [
         11,
@@ -187,7 +209,7 @@
       "difficulty": 1,
       "featureIndex": 0,
       "from": "14.8260520,57.9853200",
-      "id": "Gustafs väg-7",
+      "id": "Gustafs väg-8",
       "roadName": "Gustafs väg",
       "sourceSegmentIndexes": [
         12
@@ -234,12 +256,105 @@
     {
       "coordinates": [
         [
+          14.828528165817263,
+          57.98558439951214
+        ],
+        [
+          14.828469157218935,
+          57.98555453904357
+        ],
+        [
+          14.828297495841982,
+          57.98554031976407
+        ],
+        [
+          14.828206300735475,
+          57.985526100478936
+        ],
+        [
+          14.828107059001924,
+          57.98551330311749
+        ],
+        [
+          14.828107059001924,
+          57.985466379419705
+        ],
+        [
+          14.828144609928133,
+          57.98538532925153
+        ],
+        [
+          14.828144609928133,
+          57.985354046681444
+        ],
+        [
+          14.828018546104433,
+          57.98534693700258
+        ],
+        [
+          14.82773154973984,
+          57.98536826603486
+        ],
+        [
+          14.827538430690767,
+          57.98536968796989
+        ]
+      ],
+      "distanceMeters": 80.59297260933842,
+      "difficulty": 1,
+      "featureIndex": 1,
+      "from": "14.8285282,57.9855844",
+      "id": "Vägen till Svinhuset-2",
+      "roadName": "Vägen till Svinhuset",
+      "sourceSegmentIndexes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "to": "14.8275384,57.9853697"
+    },
+    {
+      "coordinates": [
+        [
+          14.826079308986664,
+          57.98433450432976
+        ],
+        [
+          14.826077,
+          57.984484
+        ]
+      ],
+      "distanceMeters": 16.623717348411088,
+      "difficulty": 1,
+      "featureIndex": 2,
+      "from": "14.8260793,57.9843345",
+      "id": "Lukas väg-1",
+      "roadName": "Lukas väg",
+      "sourceSegmentIndexes": [
+        0
+      ],
+      "to": "14.8260770,57.9844840"
+    },
+    {
+      "coordinates": [
+        [
           14.826077,
           57.984484
         ],
         [
           14.826079308986664,
           57.98433450432976
+        ],
+        [
+          14.826077,
+          57.984484
         ],
         [
           14.826071262359621,
@@ -282,14 +397,13 @@
           57.984998561011245
         ]
       ],
-      "distanceMeters": 127.04269966587935,
+      "distanceMeters": 127.05008390270544,
       "difficulty": 1,
       "featureIndex": 2,
       "from": "14.8260770,57.9844840",
-      "id": "Lukas väg-1",
+      "id": "Lukas väg-2",
       "roadName": "Lukas väg",
       "sourceSegmentIndexes": [
-        0,
         1,
         2,
         3,
@@ -299,7 +413,9 @@
         7,
         8,
         9,
-        10
+        10,
+        11,
+        12
       ],
       "to": "14.8266131,57.9849986"
     },
@@ -1017,6 +1133,71 @@
     {
       "coordinates": [
         [
+          14.826951026916504,
+          57.985035531685305
+        ],
+        [
+          14.826875925064089,
+          57.98506254869222
+        ],
+        [
+          14.826747179031374,
+          57.98504121947791
+        ],
+        [
+          14.82661306858063,
+          57.984998561011245
+        ]
+      ],
+      "distanceMeters": 22.521127404491494,
+      "difficulty": 1,
+      "featureIndex": 22,
+      "from": "14.8269510,57.9850355",
+      "id": "Unknown road 1-1",
+      "roadName": "Unknown road 1",
+      "sourceSegmentIndexes": [
+        1,
+        2,
+        3
+      ],
+      "to": "14.8266131,57.9849986"
+    },
+    {
+      "coordinates": [
+        [
+          14.827144145965578,
+          57.985154975140716
+        ],
+        [
+          14.827063679695131,
+          57.98512084847982
+        ],
+        [
+          14.827018082141878,
+          57.985068236480544
+        ],
+        [
+          14.826951026916504,
+          57.985035531685305
+        ]
+      ],
+      "distanceMeters": 17.883842789778097,
+      "difficulty": 1,
+      "featureIndex": 23,
+      "from": "14.8271441,57.9851550",
+      "id": "Unknown road 3-1",
+      "roadName": "Unknown road 3",
+      "sourceSegmentIndexes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "to": "14.8269510,57.9850355"
+    },
+    {
+      "coordinates": [
+        [
           14.827441871166231,
           57.985371109904875
         ],
@@ -1035,73 +1216,16 @@
       ],
       "distanceMeters": 25.480375577359005,
       "difficulty": 1,
-      "featureIndex": 22,
+      "featureIndex": 24,
       "from": "14.8274419,57.9853711",
-      "id": "Unknown väg-1",
-      "roadName": "Unknown väg",
+      "id": "Unknown road 4-1",
+      "roadName": "Unknown road 4",
       "sourceSegmentIndexes": [
         0,
         1,
         2
       ],
       "to": "14.8271441,57.9851550"
-    },
-    {
-      "coordinates": [
-        [
-          14.827173650264742,
-          57.985193367595386
-        ],
-        [
-          14.827144145965578,
-          57.985154975140716
-        ],
-        [
-          14.827063679695131,
-          57.98512084847982
-        ],
-        [
-          14.827018082141878,
-          57.985068236480544
-        ],
-        [
-          14.826951026916504,
-          57.985035531685305
-        ],
-        [
-          14.82696980237961,
-          57.98504832921743
-        ],
-        [
-          14.826875925064089,
-          57.98506254869222
-        ],
-        [
-          14.826747179031374,
-          57.98504121947791
-        ],
-        [
-          14.82661306858063,
-          57.984998561011245
-        ]
-      ],
-      "distanceMeters": 47.22267790809408,
-      "difficulty": 1,
-      "featureIndex": 22,
-      "from": "14.8271441,57.9851550",
-      "id": "Unknown väg-2",
-      "roadName": "Unknown väg",
-      "sourceSegmentIndexes": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "to": "14.8266131,57.9849986"
     },
     {
       "coordinates": [
@@ -1144,7 +1268,7 @@
       ],
       "distanceMeters": 45.58266575685837,
       "difficulty": 1,
-      "featureIndex": 23,
+      "featureIndex": 25,
       "from": "14.8266131,57.9849986",
       "id": "Levis väg-1",
       "roadName": "Levis väg",
@@ -1205,7 +1329,7 @@
       ],
       "distanceMeters": 63.10036260958182,
       "difficulty": 1,
-      "featureIndex": 26,
+      "featureIndex": 28,
       "from": "14.8276672,57.9843345",
       "id": "Lowes väg-1",
       "roadName": "Lowes väg",
@@ -1221,6 +1345,95 @@
         8
       ],
       "to": "14.8277074,57.9848933"
+    },
+    {
+      "coordinates": [
+        [
+          14.826951026916504,
+          57.985035531685305
+        ],
+        [
+          14.82707440853119,
+          57.98492461954863
+        ],
+        [
+          14.827117323875429,
+          57.98487058530641
+        ],
+        [
+          14.827187061309816,
+          57.98482792663653
+        ],
+        [
+          14.827262163162233,
+          57.984788111832124
+        ],
+        [
+          14.827385544776918,
+          57.98472838954261
+        ]
+      ],
+      "distanceMeters": 43.223886531936856,
+      "difficulty": 1,
+      "featureIndex": 30,
+      "from": "14.8269510,57.9850355",
+      "id": "Unknown road 2-1",
+      "roadName": "Unknown road 2",
+      "sourceSegmentIndexes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "to": "14.8273855,57.9847284"
+    },
+    {
+      "coordinates": [
+        [
+          14.82748478651047,
+          57.98505686090297
+        ],
+        [
+          14.827433824539185,
+          57.98502131219978
+        ],
+        [
+          14.827388226985931,
+          57.98498860736171
+        ],
+        [
+          14.82732117176056,
+          57.98493315126367
+        ],
+        [
+          14.827278256416323,
+          57.98486631944169
+        ],
+        [
+          14.827310442924501,
+          57.98482650467999
+        ],
+        [
+          14.827385544776918,
+          57.98472838954261
+        ]
+      ],
+      "distanceMeters": 41.2524105312515,
+      "difficulty": 1,
+      "featureIndex": 31,
+      "from": "14.8274848,57.9850569",
+      "id": "Majs väg-1",
+      "roadName": "Majs väg",
+      "sourceSegmentIndexes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "to": "14.8273855,57.9847284"
     },
     {
       "coordinates": [
@@ -1271,10 +1484,10 @@
       ],
       "distanceMeters": 45.94620983818014,
       "difficulty": 1,
-      "featureIndex": 27,
+      "featureIndex": 33,
       "from": "14.8266613,57.9854024",
-      "id": "Lydias väg-1",
-      "roadName": "Lydias väg",
+      "id": "Everts väg-1",
+      "roadName": "Everts väg",
       "sourceSegmentIndexes": [
         0,
         1,
@@ -1314,10 +1527,10 @@
       ],
       "distanceMeters": 22.473902920448875,
       "difficulty": 1,
-      "featureIndex": 27,
+      "featureIndex": 33,
       "from": "14.8271441,57.9851550",
-      "id": "Lydias väg-2",
-      "roadName": "Lydias väg",
+      "id": "Everts väg-2",
+      "roadName": "Everts väg",
       "sourceSegmentIndexes": [
         10,
         11,
@@ -1336,92 +1549,6 @@
           14.827482104301454,
           57.98505401700802
         ],
-        [
-          14.827433824539185,
-          57.98502131219978
-        ],
-        [
-          14.827388226985931,
-          57.98498860736171
-        ],
-        [
-          14.82732117176056,
-          57.98493315126367
-        ],
-        [
-          14.827278256416323,
-          57.98486631944169
-        ],
-        [
-          14.827310442924501,
-          57.98482650467999
-        ],
-        [
-          14.827385544776918,
-          57.98472838954261
-        ]
-      ],
-      "distanceMeters": 44.259524353987516,
-      "difficulty": 1,
-      "featureIndex": 27,
-      "from": "14.8274848,57.9850569",
-      "id": "Lydias väg-3",
-      "roadName": "Lydias väg",
-      "sourceSegmentIndexes": [
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20
-      ],
-      "to": "14.8273855,57.9847284"
-    },
-    {
-      "coordinates": [
-        [
-          14.826951026916504,
-          57.985035531685305
-        ],
-        [
-          14.82707440853119,
-          57.98492461954863
-        ],
-        [
-          14.827117323875429,
-          57.98487058530641
-        ],
-        [
-          14.827187061309816,
-          57.98482792663653
-        ],
-        [
-          14.827262163162233,
-          57.984788111832124
-        ],
-        [
-          14.827385544776918,
-          57.98472838954261
-        ]
-      ],
-      "distanceMeters": 43.223886531936856,
-      "difficulty": 1,
-      "featureIndex": 28,
-      "from": "14.8269510,57.9850355",
-      "id": "Unknown road 2-1",
-      "roadName": "Unknown road 2",
-      "sourceSegmentIndexes": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "to": "14.8273855,57.9847284"
-    },
-    {
-      "coordinates": [
         [
           14.82748478651047,
           57.98505686090297
@@ -1455,22 +1582,61 @@
           57.98506
         ]
       ],
-      "distanceMeters": 53.647155980139246,
+      "distanceMeters": 57.354797466167106,
       "difficulty": 1,
-      "featureIndex": 30,
+      "featureIndex": 33,
       "from": "14.8274848,57.9850569",
-      "id": "Unkown road 3-1",
-      "roadName": "Unkown road 3",
+      "id": "Everts väg-3",
+      "roadName": "Everts väg",
+      "sourceSegmentIndexes": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "to": "14.8283780,57.9850600"
+    },
+    {
+      "coordinates": [
+        [
+          14.827385544776918,
+          57.98472838954261
+        ],
+        [
+          14.827382862567903,
+          57.98475540678114
+        ],
+        [
+          14.827506244182588,
+          57.98482650467999
+        ],
+        [
+          14.827557206153871,
+          57.98486631944169
+        ],
+        [
+          14.827707409858705,
+          57.984893336576214
+        ]
+      ],
+      "distanceMeters": 28.45121430386518,
+      "difficulty": 1,
+      "featureIndex": 38,
+      "from": "14.8273855,57.9847284",
+      "id": "Lydias väg-1",
+      "roadName": "Lydias väg",
       "sourceSegmentIndexes": [
         0,
         1,
         2,
-        3,
-        4,
-        5,
-        6
+        3
       ],
-      "to": "14.8283780,57.9850600"
+      "to": "14.8277074,57.9848933"
     },
     {
       "coordinates": [
@@ -1478,6 +1644,24 @@
           14.827667176723482,
           57.98433450432976
         ],
+        [
+          14.827420413494112,
+          57.98438427345853
+        ]
+      ],
+      "distanceMeters": 15.563828778138689,
+      "difficulty": 1,
+      "featureIndex": 39,
+      "from": "14.8276672,57.9843345",
+      "id": "Ruths väg-1",
+      "roadName": "Ruths väg",
+      "sourceSegmentIndexes": [
+        0
+      ],
+      "to": "14.8274204,57.9843843"
+    },
+    {
+      "coordinates": [
         [
           14.827420413494112,
           57.98438427345853
@@ -1491,14 +1675,13 @@
           57.9844311985737
         ]
       ],
-      "distanceMeters": 30.49826287313626,
+      "distanceMeters": 14.93443409499757,
       "difficulty": 1,
-      "featureIndex": 34,
-      "from": "14.8276672,57.9843345",
-      "id": "Ruths väg-1",
+      "featureIndex": 39,
+      "from": "14.8274204,57.9843843",
+      "id": "Ruths väg-2",
       "roadName": "Ruths väg",
       "sourceSegmentIndexes": [
-        0,
         1,
         2
       ],
@@ -1533,9 +1716,9 @@
       ],
       "distanceMeters": 37.254208187712734,
       "difficulty": 1,
-      "featureIndex": 34,
+      "featureIndex": 39,
       "from": "14.8271897,57.9844312",
-      "id": "Ruths väg-2",
+      "id": "Ruths väg-3",
       "roadName": "Ruths väg",
       "sourceSegmentIndexes": [
         3,
@@ -1570,7 +1753,7 @@
       ],
       "degree": 3,
       "markerNames": [
-        "Junction: Vägen till Svinhuset"
+        "Junction: Vägen till Svinhuset 1"
       ],
       "nodeId": "14.8287320,57.9853060",
       "roadNames": [
@@ -1595,6 +1778,21 @@
     },
     {
       "coordinate": [
+        14.827538430690767,
+        57.98536968796989
+      ],
+      "degree": 3,
+      "markerNames": [
+        "Junction: Vägen till Svinhuset 2"
+      ],
+      "nodeId": "14.8275384,57.9853697",
+      "roadNames": [
+        "Gustafs väg",
+        "Vägen till Svinhuset"
+      ]
+    },
+    {
+      "coordinate": [
         14.827441871166231,
         57.985371109904875
       ],
@@ -1605,7 +1803,7 @@
       "nodeId": "14.8274419,57.9853711",
       "roadNames": [
         "Gustafs väg",
-        "Unknown väg"
+        "Unknown road 4"
       ]
     },
     {
@@ -1619,8 +1817,8 @@
       ],
       "nodeId": "14.8266613,57.9854024",
       "roadNames": [
-        "Gustafs väg",
-        "Lydias väg"
+        "Everts väg",
+        "Gustafs väg"
       ]
     },
     {
@@ -1670,7 +1868,7 @@
         14.828528165817263,
         57.98558439951214
       ],
-      "degree": 1,
+      "degree": 2,
       "markerNames": [
         "Svinhuset"
       ],
@@ -1681,10 +1879,26 @@
     },
     {
       "coordinate": [
+        14.826079308986664,
+        57.98433450432976
+      ],
+      "degree": 3,
+      "markerNames": [
+        "Tallgläntan"
+      ],
+      "nodeId": "14.8260793,57.9843345",
+      "roadNames": [
+        "Jolines väg",
+        "Lukas väg",
+        "Theas väg"
+      ]
+    },
+    {
+      "coordinate": [
         14.826077,
         57.984484
       ],
-      "degree": 1,
+      "degree": 2,
       "markerNames": [
         "Jarls bro"
       ],
@@ -1706,7 +1920,7 @@
       "roadNames": [
         "Levis väg",
         "Lukas väg",
-        "Unknown väg"
+        "Unknown road 1"
       ]
     },
     {
@@ -1714,7 +1928,7 @@
         14.827385544776918,
         57.98472838954261
       ],
-      "degree": 5,
+      "degree": 6,
       "markerNames": [
         "Ekgläntan"
       ],
@@ -1722,24 +1936,10 @@
       "roadNames": [
         "Johannas väg",
         "Lydias väg",
+        "Majs väg",
         "Ruths väg",
         "Theas väg",
         "Unknown road 2"
-      ]
-    },
-    {
-      "coordinate": [
-        14.826079308986664,
-        57.98433450432976
-      ],
-      "degree": 2,
-      "markerNames": [
-        "Tallgläntan"
-      ],
-      "nodeId": "14.8260793,57.9843345",
-      "roadNames": [
-        "Jolines väg",
-        "Theas väg"
       ]
     },
     {
@@ -1754,7 +1954,7 @@
       "nodeId": "14.8283780,57.9850600",
       "roadNames": [
         "Berndts väg",
-        "Unkown road 3"
+        "Everts väg"
       ]
     },
     {
@@ -1851,6 +2051,22 @@
     },
     {
       "coordinate": [
+        14.826951026916504,
+        57.985035531685305
+      ],
+      "degree": 3,
+      "markerNames": [
+        "Rönngläntan"
+      ],
+      "nodeId": "14.8269510,57.9850355",
+      "roadNames": [
+        "Unknown road 1",
+        "Unknown road 2",
+        "Unknown road 3"
+      ]
+    },
+    {
+      "coordinate": [
         14.827144145965578,
         57.985154975140716
       ],
@@ -1860,8 +2076,9 @@
       ],
       "nodeId": "14.8271441,57.9851550",
       "roadNames": [
-        "Lydias väg",
-        "Unknown väg"
+        "Everts väg",
+        "Unknown road 3",
+        "Unknown road 4"
       ]
     },
     {
@@ -1869,13 +2086,14 @@
         14.827707409858705,
         57.984893336576214
       ],
-      "degree": 1,
+      "degree": 2,
       "markerNames": [
         "Grangläntan"
       ],
       "nodeId": "14.8277074,57.9848933",
       "roadNames": [
-        "Lowes väg"
+        "Lowes väg",
+        "Lydias väg"
       ]
     },
     {
@@ -1889,22 +2107,22 @@
       ],
       "nodeId": "14.8274848,57.9850569",
       "roadNames": [
-        "Lydias väg",
-        "Unkown road 3"
+        "Everts väg",
+        "Majs väg"
       ]
     },
     {
       "coordinate": [
-        14.826951026916504,
-        57.985035531685305
+        14.827420413494112,
+        57.98438427345853
       ],
-      "degree": 1,
+      "degree": 2,
       "markerNames": [
-        "Rönngläntan"
+        "Trollet"
       ],
-      "nodeId": "14.8269510,57.9850355",
+      "nodeId": "14.8274204,57.9843843",
       "roadNames": [
-        "Unknown road 2"
+        "Ruths väg"
       ]
     },
     {
@@ -1917,18 +2135,6 @@
         "Grusgropen"
       ],
       "nodeId": "14.8249930,57.9855503",
-      "roadNames": []
-    },
-    {
-      "coordinate": [
-        14.827420413494112,
-        57.98438427345853
-      ],
-      "degree": 0,
-      "markerNames": [
-        "Trollet"
-      ],
-      "nodeId": "14.8274204,57.9843843",
       "roadNames": []
     },
     {
@@ -1966,7 +2172,7 @@
       ],
       "id": "14.8287320,57.9853060",
       "markerNames": [
-        "Junction: Vägen till Svinhuset"
+        "Junction: Vägen till Svinhuset 1"
       ],
       "roadNames": [
         "Gustafs väg",
@@ -1989,6 +2195,20 @@
     },
     {
       "coordinate": [
+        14.827538430690767,
+        57.98536968796989
+      ],
+      "id": "14.8275384,57.9853697",
+      "markerNames": [
+        "Junction: Vägen till Svinhuset 2"
+      ],
+      "roadNames": [
+        "Gustafs väg",
+        "Vägen till Svinhuset"
+      ]
+    },
+    {
+      "coordinate": [
         14.827441871166231,
         57.985371109904875
       ],
@@ -1998,7 +2218,7 @@
       ],
       "roadNames": [
         "Gustafs väg",
-        "Unknown väg"
+        "Unknown road 4"
       ]
     },
     {
@@ -2011,8 +2231,8 @@
         "Junction: Lydias väg"
       ],
       "roadNames": [
-        "Gustafs väg",
-        "Lydias väg"
+        "Everts väg",
+        "Gustafs väg"
       ]
     },
     {
@@ -2069,6 +2289,21 @@
     },
     {
       "coordinate": [
+        14.826079308986664,
+        57.98433450432976
+      ],
+      "id": "14.8260793,57.9843345",
+      "markerNames": [
+        "Tallgläntan"
+      ],
+      "roadNames": [
+        "Jolines väg",
+        "Lukas väg",
+        "Theas väg"
+      ]
+    },
+    {
+      "coordinate": [
         14.826077,
         57.984484
       ],
@@ -2092,7 +2327,7 @@
       "roadNames": [
         "Levis väg",
         "Lukas väg",
-        "Unknown väg"
+        "Unknown road 1"
       ]
     },
     {
@@ -2107,23 +2342,10 @@
       "roadNames": [
         "Johannas väg",
         "Lydias väg",
+        "Majs väg",
         "Ruths väg",
         "Theas väg",
         "Unknown road 2"
-      ]
-    },
-    {
-      "coordinate": [
-        14.826079308986664,
-        57.98433450432976
-      ],
-      "id": "14.8260793,57.9843345",
-      "markerNames": [
-        "Tallgläntan"
-      ],
-      "roadNames": [
-        "Jolines väg",
-        "Theas väg"
       ]
     },
     {
@@ -2137,7 +2359,7 @@
       ],
       "roadNames": [
         "Berndts väg",
-        "Unkown road 3"
+        "Everts väg"
       ]
     },
     {
@@ -2228,6 +2450,21 @@
     },
     {
       "coordinate": [
+        14.826951026916504,
+        57.985035531685305
+      ],
+      "id": "14.8269510,57.9850355",
+      "markerNames": [
+        "Rönngläntan"
+      ],
+      "roadNames": [
+        "Unknown road 1",
+        "Unknown road 2",
+        "Unknown road 3"
+      ]
+    },
+    {
+      "coordinate": [
         14.827144145965578,
         57.985154975140716
       ],
@@ -2236,8 +2473,9 @@
         "Junction: Alvas väg / Lydias väg"
       ],
       "roadNames": [
-        "Lydias väg",
-        "Unknown väg"
+        "Everts väg",
+        "Unknown road 3",
+        "Unknown road 4"
       ]
     },
     {
@@ -2250,7 +2488,8 @@
         "Grangläntan"
       ],
       "roadNames": [
-        "Lowes väg"
+        "Lowes väg",
+        "Lydias väg"
       ]
     },
     {
@@ -2263,21 +2502,21 @@
         "Junction: Unkown road 3"
       ],
       "roadNames": [
-        "Lydias väg",
-        "Unkown road 3"
+        "Everts väg",
+        "Majs väg"
       ]
     },
     {
       "coordinate": [
-        14.826951026916504,
-        57.985035531685305
+        14.827420413494112,
+        57.98438427345853
       ],
-      "id": "14.8269510,57.9850355",
+      "id": "14.8274204,57.9843843",
       "markerNames": [
-        "Rönngläntan"
+        "Trollet"
       ],
       "roadNames": [
-        "Unknown road 2"
+        "Ruths väg"
       ]
     },
     {
@@ -2288,17 +2527,6 @@
       "id": "14.8249930,57.9855503",
       "markerNames": [
         "Grusgropen"
-      ],
-      "roadNames": []
-    },
-    {
-      "coordinate": [
-        14.827420413494112,
-        57.98438427345853
-      ],
-      "id": "14.8274204,57.9843843",
-      "markerNames": [
-        "Trollet"
       ],
       "roadNames": []
     },
@@ -2376,7 +2604,7 @@
         ]
       ],
       "roadName": "Gustafs väg",
-      "totalDistanceMeters": 227.0366707923668,
+      "totalDistanceMeters": 227.0430188409449,
       "segments": [
         {
           "coordinates": [
@@ -2447,11 +2675,11 @@
               57.98535689055258
             ],
             [
-              14.827471375465395,
-              57.98537395377464
+              14.827538430690767,
+              57.98536968796989
             ]
           ],
-          "distanceMeters": 61.4654493774709,
+          "distanceMeters": 57.49064027267066,
           "difficulty": 1,
           "featureIndex": 0,
           "from": "14.8285200,57.9852960",
@@ -2460,6 +2688,28 @@
           "sourceSegmentIndexes": [
             4,
             5,
+            6
+          ],
+          "to": "14.8275384,57.9853697"
+        },
+        {
+          "coordinates": [
+            [
+              14.827538430690767,
+              57.98536968796989
+            ],
+            [
+              14.827471375465395,
+              57.98537395377464
+            ]
+          ],
+          "distanceMeters": 3.9811571533783137,
+          "difficulty": 1,
+          "featureIndex": 0,
+          "from": "14.8275384,57.9853697",
+          "id": "Gustafs väg-4",
+          "roadName": "Gustafs väg",
+          "sourceSegmentIndexes": [
             6
           ],
           "to": "14.8274419,57.9853711"
@@ -2487,7 +2737,7 @@
           "difficulty": 1,
           "featureIndex": 0,
           "from": "14.8274419,57.9853711",
-          "id": "Gustafs väg-4",
+          "id": "Gustafs väg-5",
           "roadName": "Gustafs väg",
           "sourceSegmentIndexes": [
             7,
@@ -2515,7 +2765,7 @@
           "difficulty": 1,
           "featureIndex": 0,
           "from": "14.8266613,57.9854024",
-          "id": "Gustafs väg-5",
+          "id": "Gustafs väg-6",
           "roadName": "Gustafs väg",
           "sourceSegmentIndexes": [
             10,
@@ -2542,7 +2792,7 @@
           "difficulty": 1,
           "featureIndex": 0,
           "from": "14.8263288,57.9853498",
-          "id": "Gustafs väg-6",
+          "id": "Gustafs väg-7",
           "roadName": "Gustafs väg",
           "sourceSegmentIndexes": [
             11,
@@ -2565,7 +2815,7 @@
           "difficulty": 1,
           "featureIndex": 0,
           "from": "14.8260520,57.9853200",
-          "id": "Gustafs väg-7",
+          "id": "Gustafs väg-8",
           "roadName": "Gustafs väg",
           "sourceSegmentIndexes": [
             12
@@ -2596,10 +2846,50 @@
         [
           14.828528165817263,
           57.98558439951214
+        ],
+        [
+          14.828469157218935,
+          57.98555453904357
+        ],
+        [
+          14.828297495841982,
+          57.98554031976407
+        ],
+        [
+          14.828206300735475,
+          57.985526100478936
+        ],
+        [
+          14.828107059001924,
+          57.98551330311749
+        ],
+        [
+          14.828107059001924,
+          57.985466379419705
+        ],
+        [
+          14.828144609928133,
+          57.98538532925153
+        ],
+        [
+          14.828144609928133,
+          57.985354046681444
+        ],
+        [
+          14.828018546104433,
+          57.98534693700258
+        ],
+        [
+          14.82773154973984,
+          57.98536826603486
+        ],
+        [
+          14.827538430690767,
+          57.98536968796989
         ]
       ],
       "roadName": "Vägen till Svinhuset",
-      "totalDistanceMeters": 37.40219789429424,
+      "totalDistanceMeters": 117.99517050363266,
       "segments": [
         {
           "coordinates": [
@@ -2637,6 +2927,73 @@
             3
           ],
           "to": "14.8285282,57.9855844"
+        },
+        {
+          "coordinates": [
+            [
+              14.828528165817263,
+              57.98558439951214
+            ],
+            [
+              14.828469157218935,
+              57.98555453904357
+            ],
+            [
+              14.828297495841982,
+              57.98554031976407
+            ],
+            [
+              14.828206300735475,
+              57.985526100478936
+            ],
+            [
+              14.828107059001924,
+              57.98551330311749
+            ],
+            [
+              14.828107059001924,
+              57.985466379419705
+            ],
+            [
+              14.828144609928133,
+              57.98538532925153
+            ],
+            [
+              14.828144609928133,
+              57.985354046681444
+            ],
+            [
+              14.828018546104433,
+              57.98534693700258
+            ],
+            [
+              14.82773154973984,
+              57.98536826603486
+            ],
+            [
+              14.827538430690767,
+              57.98536968796989
+            ]
+          ],
+          "distanceMeters": 80.59297260933842,
+          "difficulty": 1,
+          "featureIndex": 1,
+          "from": "14.8285282,57.9855844",
+          "id": "Vägen till Svinhuset-2",
+          "roadName": "Vägen till Svinhuset",
+          "sourceSegmentIndexes": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "to": "14.8275384,57.9853697"
         }
       ]
     },
@@ -2644,12 +3001,20 @@
       "featureIndex": 2,
       "originalCoordinates": [
         [
+          14.826079308986664,
+          57.98433450432976
+        ],
+        [
           14.826077,
           57.984484
         ],
         [
           14.826079308986664,
           57.98433450432976
+        ],
+        [
+          14.826077,
+          57.984484
         ],
         [
           14.826071262359621,
@@ -2693,8 +3058,30 @@
         ]
       ],
       "roadName": "Lukas väg",
-      "totalDistanceMeters": 127.04269966587935,
+      "totalDistanceMeters": 143.67380125111652,
       "segments": [
+        {
+          "coordinates": [
+            [
+              14.826079308986664,
+              57.98433450432976
+            ],
+            [
+              14.826077,
+              57.984484
+            ]
+          ],
+          "distanceMeters": 16.623717348411088,
+          "difficulty": 1,
+          "featureIndex": 2,
+          "from": "14.8260793,57.9843345",
+          "id": "Lukas väg-1",
+          "roadName": "Lukas väg",
+          "sourceSegmentIndexes": [
+            0
+          ],
+          "to": "14.8260770,57.9844840"
+        },
         {
           "coordinates": [
             [
@@ -2704,6 +3091,10 @@
             [
               14.826079308986664,
               57.98433450432976
+            ],
+            [
+              14.826077,
+              57.984484
             ],
             [
               14.826071262359621,
@@ -2746,14 +3137,13 @@
               57.984998561011245
             ]
           ],
-          "distanceMeters": 127.04269966587935,
+          "distanceMeters": 127.05008390270544,
           "difficulty": 1,
           "featureIndex": 2,
           "from": "14.8260770,57.9844840",
-          "id": "Lukas väg-1",
+          "id": "Lukas väg-2",
           "roadName": "Lukas väg",
           "sourceSegmentIndexes": [
-            0,
             1,
             2,
             3,
@@ -2763,7 +3153,9 @@
             7,
             8,
             9,
-            10
+            10,
+            11,
+            12
           ],
           "to": "14.8266131,57.9849986"
         }
@@ -4016,6 +4408,129 @@
       "featureIndex": 22,
       "originalCoordinates": [
         [
+          14.826951026916504,
+          57.985035531685305
+        ],
+        [
+          14.826951026916504,
+          57.985035531685305
+        ],
+        [
+          14.826875925064089,
+          57.98506254869222
+        ],
+        [
+          14.826747179031374,
+          57.98504121947791
+        ],
+        [
+          14.82661306858063,
+          57.984998561011245
+        ]
+      ],
+      "roadName": "Unknown road 1",
+      "totalDistanceMeters": 22.521127404491494,
+      "segments": [
+        {
+          "coordinates": [
+            [
+              14.826951026916504,
+              57.985035531685305
+            ],
+            [
+              14.826875925064089,
+              57.98506254869222
+            ],
+            [
+              14.826747179031374,
+              57.98504121947791
+            ],
+            [
+              14.82661306858063,
+              57.984998561011245
+            ]
+          ],
+          "distanceMeters": 22.521127404491494,
+          "difficulty": 1,
+          "featureIndex": 22,
+          "from": "14.8269510,57.9850355",
+          "id": "Unknown road 1-1",
+          "roadName": "Unknown road 1",
+          "sourceSegmentIndexes": [
+            1,
+            2,
+            3
+          ],
+          "to": "14.8266131,57.9849986"
+        }
+      ]
+    },
+    {
+      "featureIndex": 23,
+      "originalCoordinates": [
+        [
+          14.827144145965578,
+          57.985154975140716
+        ],
+        [
+          14.827063679695131,
+          57.98512084847982
+        ],
+        [
+          14.827018082141878,
+          57.985068236480544
+        ],
+        [
+          14.826951026916504,
+          57.985035531685305
+        ],
+        [
+          14.826951026916504,
+          57.985035531685305
+        ]
+      ],
+      "roadName": "Unknown road 3",
+      "totalDistanceMeters": 17.883842789778097,
+      "segments": [
+        {
+          "coordinates": [
+            [
+              14.827144145965578,
+              57.985154975140716
+            ],
+            [
+              14.827063679695131,
+              57.98512084847982
+            ],
+            [
+              14.827018082141878,
+              57.985068236480544
+            ],
+            [
+              14.826951026916504,
+              57.985035531685305
+            ]
+          ],
+          "distanceMeters": 17.883842789778097,
+          "difficulty": 1,
+          "featureIndex": 23,
+          "from": "14.8271441,57.9851550",
+          "id": "Unknown road 3-1",
+          "roadName": "Unknown road 3",
+          "sourceSegmentIndexes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "to": "14.8269510,57.9850355"
+        }
+      ]
+    },
+    {
+      "featureIndex": 24,
+      "originalCoordinates": [
+        [
           14.827441871166231,
           57.985371109904875
         ],
@@ -4034,38 +4549,10 @@
         [
           14.827144145965578,
           57.985154975140716
-        ],
-        [
-          14.827063679695131,
-          57.98512084847982
-        ],
-        [
-          14.827018082141878,
-          57.985068236480544
-        ],
-        [
-          14.826951026916504,
-          57.985035531685305
-        ],
-        [
-          14.82696980237961,
-          57.98504832921743
-        ],
-        [
-          14.826875925064089,
-          57.98506254869222
-        ],
-        [
-          14.826747179031374,
-          57.98504121947791
-        ],
-        [
-          14.82661306858063,
-          57.984998561011245
         ]
       ],
-      "roadName": "Unknown väg",
-      "totalDistanceMeters": 72.70305348545308,
+      "roadName": "Unknown road 4",
+      "totalDistanceMeters": 25.480375577359005,
       "segments": [
         {
           "coordinates": [
@@ -4088,78 +4575,21 @@
           ],
           "distanceMeters": 25.480375577359005,
           "difficulty": 1,
-          "featureIndex": 22,
+          "featureIndex": 24,
           "from": "14.8274419,57.9853711",
-          "id": "Unknown väg-1",
-          "roadName": "Unknown väg",
+          "id": "Unknown road 4-1",
+          "roadName": "Unknown road 4",
           "sourceSegmentIndexes": [
             0,
             1,
             2
           ],
           "to": "14.8271441,57.9851550"
-        },
-        {
-          "coordinates": [
-            [
-              14.827173650264742,
-              57.985193367595386
-            ],
-            [
-              14.827144145965578,
-              57.985154975140716
-            ],
-            [
-              14.827063679695131,
-              57.98512084847982
-            ],
-            [
-              14.827018082141878,
-              57.985068236480544
-            ],
-            [
-              14.826951026916504,
-              57.985035531685305
-            ],
-            [
-              14.82696980237961,
-              57.98504832921743
-            ],
-            [
-              14.826875925064089,
-              57.98506254869222
-            ],
-            [
-              14.826747179031374,
-              57.98504121947791
-            ],
-            [
-              14.82661306858063,
-              57.984998561011245
-            ]
-          ],
-          "distanceMeters": 47.22267790809408,
-          "difficulty": 1,
-          "featureIndex": 22,
-          "from": "14.8271441,57.9851550",
-          "id": "Unknown väg-2",
-          "roadName": "Unknown väg",
-          "sourceSegmentIndexes": [
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-          ],
-          "to": "14.8266131,57.9849986"
         }
       ]
     },
     {
-      "featureIndex": 23,
+      "featureIndex": 25,
       "originalCoordinates": [
         [
           14.82661306858063,
@@ -4242,7 +4672,7 @@
           ],
           "distanceMeters": 45.58266575685837,
           "difficulty": 1,
-          "featureIndex": 23,
+          "featureIndex": 25,
           "from": "14.8266131,57.9849986",
           "id": "Levis väg-1",
           "roadName": "Levis väg",
@@ -4261,7 +4691,7 @@
       ]
     },
     {
-      "featureIndex": 26,
+      "featureIndex": 28,
       "originalCoordinates": [
         [
           14.827667176723482,
@@ -4352,7 +4782,7 @@
           ],
           "distanceMeters": 63.10036260958182,
           "difficulty": 1,
-          "featureIndex": 26,
+          "featureIndex": 28,
           "from": "14.8276672,57.9843345",
           "id": "Lowes väg-1",
           "roadName": "Lowes väg",
@@ -4372,7 +4802,177 @@
       ]
     },
     {
-      "featureIndex": 27,
+      "featureIndex": 29,
+      "originalCoordinates": [],
+      "roadName": "Lydias väg",
+      "totalDistanceMeters": 0,
+      "segments": []
+    },
+    {
+      "featureIndex": 30,
+      "originalCoordinates": [
+        [
+          14.826951026916504,
+          57.985035531685305
+        ],
+        [
+          14.826951026916518,
+          57.985035531685305
+        ],
+        [
+          14.82707440853119,
+          57.98492461954863
+        ],
+        [
+          14.827117323875429,
+          57.98487058530641
+        ],
+        [
+          14.827187061309816,
+          57.98482792663653
+        ],
+        [
+          14.827262163162233,
+          57.984788111832124
+        ],
+        [
+          14.827385544776918,
+          57.98472838954261
+        ]
+      ],
+      "roadName": "Unknown road 2",
+      "totalDistanceMeters": 43.223886531936856,
+      "segments": [
+        {
+          "coordinates": [
+            [
+              14.826951026916504,
+              57.985035531685305
+            ],
+            [
+              14.82707440853119,
+              57.98492461954863
+            ],
+            [
+              14.827117323875429,
+              57.98487058530641
+            ],
+            [
+              14.827187061309816,
+              57.98482792663653
+            ],
+            [
+              14.827262163162233,
+              57.984788111832124
+            ],
+            [
+              14.827385544776918,
+              57.98472838954261
+            ]
+          ],
+          "distanceMeters": 43.223886531936856,
+          "difficulty": 1,
+          "featureIndex": 30,
+          "from": "14.8269510,57.9850355",
+          "id": "Unknown road 2-1",
+          "roadName": "Unknown road 2",
+          "sourceSegmentIndexes": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "to": "14.8273855,57.9847284"
+        }
+      ]
+    },
+    {
+      "featureIndex": 31,
+      "originalCoordinates": [
+        [
+          14.82748478651047,
+          57.98505686090297
+        ],
+        [
+          14.827433824539185,
+          57.98502131219978
+        ],
+        [
+          14.827388226985931,
+          57.98498860736171
+        ],
+        [
+          14.82732117176056,
+          57.98493315126367
+        ],
+        [
+          14.827278256416323,
+          57.98486631944169
+        ],
+        [
+          14.827310442924501,
+          57.98482650467999
+        ],
+        [
+          14.827385544776918,
+          57.98472838954261
+        ]
+      ],
+      "roadName": "Majs väg",
+      "totalDistanceMeters": 41.2524105312515,
+      "segments": [
+        {
+          "coordinates": [
+            [
+              14.82748478651047,
+              57.98505686090297
+            ],
+            [
+              14.827433824539185,
+              57.98502131219978
+            ],
+            [
+              14.827388226985931,
+              57.98498860736171
+            ],
+            [
+              14.82732117176056,
+              57.98493315126367
+            ],
+            [
+              14.827278256416323,
+              57.98486631944169
+            ],
+            [
+              14.827310442924501,
+              57.98482650467999
+            ],
+            [
+              14.827385544776918,
+              57.98472838954261
+            ]
+          ],
+          "distanceMeters": 41.2524105312515,
+          "difficulty": 1,
+          "featureIndex": 31,
+          "from": "14.8274848,57.9850569",
+          "id": "Majs väg-1",
+          "roadName": "Majs väg",
+          "sourceSegmentIndexes": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "to": "14.8273855,57.9847284"
+        }
+      ]
+    },
+    {
+      "featureIndex": 33,
       "originalCoordinates": [
         [
           14.826661348342897,
@@ -4439,32 +5039,40 @@
           57.98505401700802
         ],
         [
-          14.827433824539185,
-          57.98502131219978
+          14.82748478651047,
+          57.98505686090297
         ],
         [
-          14.827388226985931,
-          57.98498860736171
+          14.827616214752199,
+          57.98506965842746
         ],
         [
-          14.82732117176056,
-          57.98493315126367
+          14.827747642993929,
+          57.98506965842746
         ],
         [
-          14.827278256416323,
-          57.98486631944169
+          14.827868342399597,
+          57.98506965842746
         ],
         [
-          14.827310442924501,
-          57.98482650467999
+          14.82795149087906,
+          57.98505686090297
         ],
         [
-          14.827385544776918,
-          57.98472838954261
+          14.828101694583895,
+          57.98503979752984
+        ],
+        [
+          14.828241169452669,
+          57.985035531685305
+        ],
+        [
+          14.828378,
+          57.98506
         ]
       ],
-      "roadName": "Lydias väg",
-      "totalDistanceMeters": 112.67963711261653,
+      "roadName": "Everts väg",
+      "totalDistanceMeters": 125.77491022479612,
       "segments": [
         {
           "coordinates": [
@@ -4515,10 +5123,10 @@
           ],
           "distanceMeters": 45.94620983818014,
           "difficulty": 1,
-          "featureIndex": 27,
+          "featureIndex": 33,
           "from": "14.8266613,57.9854024",
-          "id": "Lydias väg-1",
-          "roadName": "Lydias väg",
+          "id": "Everts väg-1",
+          "roadName": "Everts väg",
           "sourceSegmentIndexes": [
             0,
             1,
@@ -4558,10 +5166,10 @@
           ],
           "distanceMeters": 22.473902920448875,
           "difficulty": 1,
-          "featureIndex": 27,
+          "featureIndex": 33,
           "from": "14.8271441,57.9851550",
-          "id": "Lydias väg-2",
-          "roadName": "Lydias väg",
+          "id": "Everts väg-2",
+          "roadName": "Everts väg",
           "sourceSegmentIndexes": [
             10,
             11,
@@ -4580,170 +5188,6 @@
               14.827482104301454,
               57.98505401700802
             ],
-            [
-              14.827433824539185,
-              57.98502131219978
-            ],
-            [
-              14.827388226985931,
-              57.98498860736171
-            ],
-            [
-              14.82732117176056,
-              57.98493315126367
-            ],
-            [
-              14.827278256416323,
-              57.98486631944169
-            ],
-            [
-              14.827310442924501,
-              57.98482650467999
-            ],
-            [
-              14.827385544776918,
-              57.98472838954261
-            ]
-          ],
-          "distanceMeters": 44.259524353987516,
-          "difficulty": 1,
-          "featureIndex": 27,
-          "from": "14.8274848,57.9850569",
-          "id": "Lydias väg-3",
-          "roadName": "Lydias väg",
-          "sourceSegmentIndexes": [
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            20
-          ],
-          "to": "14.8273855,57.9847284"
-        }
-      ]
-    },
-    {
-      "featureIndex": 28,
-      "originalCoordinates": [
-        [
-          14.826951026916504,
-          57.985035531685305
-        ],
-        [
-          14.826951026916518,
-          57.985035531685305
-        ],
-        [
-          14.82707440853119,
-          57.98492461954863
-        ],
-        [
-          14.827117323875429,
-          57.98487058530641
-        ],
-        [
-          14.827187061309816,
-          57.98482792663653
-        ],
-        [
-          14.827262163162233,
-          57.984788111832124
-        ],
-        [
-          14.827385544776918,
-          57.98472838954261
-        ]
-      ],
-      "roadName": "Unknown road 2",
-      "totalDistanceMeters": 43.223886531936856,
-      "segments": [
-        {
-          "coordinates": [
-            [
-              14.826951026916504,
-              57.985035531685305
-            ],
-            [
-              14.82707440853119,
-              57.98492461954863
-            ],
-            [
-              14.827117323875429,
-              57.98487058530641
-            ],
-            [
-              14.827187061309816,
-              57.98482792663653
-            ],
-            [
-              14.827262163162233,
-              57.984788111832124
-            ],
-            [
-              14.827385544776918,
-              57.98472838954261
-            ]
-          ],
-          "distanceMeters": 43.223886531936856,
-          "difficulty": 1,
-          "featureIndex": 28,
-          "from": "14.8269510,57.9850355",
-          "id": "Unknown road 2-1",
-          "roadName": "Unknown road 2",
-          "sourceSegmentIndexes": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "to": "14.8273855,57.9847284"
-        }
-      ]
-    },
-    {
-      "featureIndex": 30,
-      "originalCoordinates": [
-        [
-          14.82748478651047,
-          57.98505686090297
-        ],
-        [
-          14.827616214752199,
-          57.98506965842746
-        ],
-        [
-          14.827747642993929,
-          57.98506965842746
-        ],
-        [
-          14.827868342399597,
-          57.98506965842746
-        ],
-        [
-          14.82795149087906,
-          57.98505686090297
-        ],
-        [
-          14.828101694583895,
-          57.98503979752984
-        ],
-        [
-          14.828241169452669,
-          57.985035531685305
-        ],
-        [
-          14.828378,
-          57.98506
-        ]
-      ],
-      "roadName": "Unkown road 3",
-      "totalDistanceMeters": 53.647155980139246,
-      "segments": [
-        {
-          "coordinates": [
             [
               14.82748478651047,
               57.98505686090297
@@ -4777,27 +5221,95 @@
               57.98506
             ]
           ],
-          "distanceMeters": 53.647155980139246,
+          "distanceMeters": 57.354797466167106,
           "difficulty": 1,
-          "featureIndex": 30,
+          "featureIndex": 33,
           "from": "14.8274848,57.9850569",
-          "id": "Unkown road 3-1",
-          "roadName": "Unkown road 3",
+          "id": "Everts väg-3",
+          "roadName": "Everts väg",
           "sourceSegmentIndexes": [
-            0,
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
           ],
           "to": "14.8283780,57.9850600"
         }
       ]
     },
     {
-      "featureIndex": 34,
+      "featureIndex": 38,
+      "originalCoordinates": [
+        [
+          14.827385544776918,
+          57.98472838954261
+        ],
+        [
+          14.827382862567903,
+          57.98475540678114
+        ],
+        [
+          14.827506244182588,
+          57.98482650467999
+        ],
+        [
+          14.827557206153871,
+          57.98486631944169
+        ],
+        [
+          14.827707409858705,
+          57.984893336576214
+        ]
+      ],
+      "roadName": "Lydias väg",
+      "totalDistanceMeters": 28.45121430386518,
+      "segments": [
+        {
+          "coordinates": [
+            [
+              14.827385544776918,
+              57.98472838954261
+            ],
+            [
+              14.827382862567903,
+              57.98475540678114
+            ],
+            [
+              14.827506244182588,
+              57.98482650467999
+            ],
+            [
+              14.827557206153871,
+              57.98486631944169
+            ],
+            [
+              14.827707409858705,
+              57.984893336576214
+            ]
+          ],
+          "distanceMeters": 28.45121430386518,
+          "difficulty": 1,
+          "featureIndex": 38,
+          "from": "14.8273855,57.9847284",
+          "id": "Lydias väg-1",
+          "roadName": "Lydias väg",
+          "sourceSegmentIndexes": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "to": "14.8277074,57.9848933"
+        }
+      ]
+    },
+    {
+      "featureIndex": 39,
       "originalCoordinates": [
         [
           14.827667176723482,
@@ -4848,6 +5360,24 @@
             [
               14.827420413494112,
               57.98438427345853
+            ]
+          ],
+          "distanceMeters": 15.563828778138689,
+          "difficulty": 1,
+          "featureIndex": 39,
+          "from": "14.8276672,57.9843345",
+          "id": "Ruths väg-1",
+          "roadName": "Ruths väg",
+          "sourceSegmentIndexes": [
+            0
+          ],
+          "to": "14.8274204,57.9843843"
+        },
+        {
+          "coordinates": [
+            [
+              14.827420413494112,
+              57.98438427345853
             ],
             [
               14.827267527580263,
@@ -4858,14 +5388,13 @@
               57.9844311985737
             ]
           ],
-          "distanceMeters": 30.49826287313626,
+          "distanceMeters": 14.93443409499757,
           "difficulty": 1,
-          "featureIndex": 34,
-          "from": "14.8276672,57.9843345",
-          "id": "Ruths väg-1",
+          "featureIndex": 39,
+          "from": "14.8274204,57.9843843",
+          "id": "Ruths väg-2",
           "roadName": "Ruths väg",
           "sourceSegmentIndexes": [
-            0,
             1,
             2
           ],
@@ -4900,9 +5429,9 @@
           ],
           "distanceMeters": 37.254208187712734,
           "difficulty": 1,
-          "featureIndex": 34,
+          "featureIndex": 39,
           "from": "14.8271897,57.9844312",
-          "id": "Ruths väg-2",
+          "id": "Ruths väg-3",
           "roadName": "Ruths väg",
           "sourceSegmentIndexes": [
             3,
