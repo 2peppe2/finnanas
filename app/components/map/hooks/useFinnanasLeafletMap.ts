@@ -13,6 +13,12 @@ import {
 const defaultCenter: L.LatLngExpression = [57.9853, 14.828];
 const userLocationPaneName = "user-location-pane";
 
+function redrawPathLayer(layer: L.Layer) {
+  if (layer instanceof L.Path) {
+    layer.redraw();
+  }
+}
+
 type UseFinnanasLeafletMapOptions = {
   activeLayer: LayerOption;
   bearing: number;
@@ -98,6 +104,10 @@ export function useFinnanasLeafletMap({
     }
     map.on("click", () => clearSelectionRef.current());
     map.on("dragstart", () => onMapMovedByUserRef.current());
+    map.on("move rotate zoomend", () => {
+      routeLayerRef.current?.eachLayer(redrawPathLayer);
+      selectedHaloRef.current?.eachLayer(redrawPathLayer);
+    });
 
     mapRef.current = map;
     setLeafletMap(map);
@@ -246,7 +256,7 @@ export function useFinnanasLeafletMap({
       return;
     }
 
-    map.setBearing(bearing);
+    map.setBearing((bearing + 180) % 360);
   }, [bearing, isNavigationMode]);
 
   const recenterOnUser = useCallback(() => {
