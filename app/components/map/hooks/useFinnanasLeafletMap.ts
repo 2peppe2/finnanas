@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import L from "leaflet";
+import "leaflet-rotate";
 import type { GeoJsonData, GeoJsonFeature, LayerOption, PointFeature, UserLocation } from "../types";
 import { getFeatureName, isLineStringFeature, isPointFeature } from "../lib/featureUtils";
 import {
@@ -79,7 +80,12 @@ export function useFinnanasLeafletMap({
     }
 
     const map = L.map(mapElementRef.current, {
+      bearing: 0,
       center: defaultCenter,
+      compassBearing: false,
+      rotate: true,
+      rotateControl: false,
+      touchRotate: true,
       zoom: 15,
       zoomControl: false,
     });
@@ -234,17 +240,13 @@ export function useFinnanasLeafletMap({
   }, [isFollowingUser, isNavigationMode, userLocation]);
 
   useEffect(() => {
-    const mapElement = mapElementRef.current;
+    const map = mapRef.current;
 
-    if (!mapElement) {
+    if (!map?.setBearing || !isNavigationMode) {
       return;
     }
 
-    mapElement.style.transform = isNavigationMode
-      ? `rotate(${-bearing}deg) scale(1.18)`
-      : "";
-    mapElement.style.transformOrigin = "center center";
-    mapElement.style.transition = "transform 240ms ease-out";
+    map.setBearing(bearing);
   }, [bearing, isNavigationMode]);
 
   const recenterOnUser = useCallback(() => {
