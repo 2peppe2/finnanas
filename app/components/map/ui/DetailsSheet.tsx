@@ -13,6 +13,7 @@ type DetailsSheetProps = {
   locationError: string | null;
   locationStatus: LocationStatus;
   onClose: () => void;
+  onNavigateToSelected: () => void;
   onPointerCancel: (event: React.PointerEvent<HTMLElement>) => void;
   onPointerDown: (event: React.PointerEvent<HTMLElement>) => void;
   onPointerMove: (event: React.PointerEvent<HTMLElement>) => void;
@@ -21,6 +22,7 @@ type DetailsSheetProps = {
   routeResult: RouteResult | null;
   selectedFeature: GeoJsonFeature | null;
   selectedName: string;
+  showNavigateButton: boolean;
   sheetDragY: number;
   userLocation: UserLocation | null;
 };
@@ -31,6 +33,7 @@ export default function DetailsSheet({
   locationError,
   locationStatus,
   onClose,
+  onNavigateToSelected,
   onPointerCancel,
   onPointerDown,
   onPointerMove,
@@ -39,6 +42,7 @@ export default function DetailsSheet({
   routeResult,
   selectedFeature,
   selectedName,
+  showNavigateButton,
   sheetDragY,
   userLocation,
 }: DetailsSheetProps) {
@@ -83,6 +87,16 @@ export default function DetailsSheet({
               </h2>
             </div>
           </div>
+
+          {showNavigateButton ? (
+            <button
+              type="button"
+              className="mt-4 w-full rounded-lg bg-blue-600 px-4 py-3 text-base font-semibold text-white shadow-lg shadow-blue-950/20"
+              onClick={onNavigateToSelected}
+            >
+              Ta mig hit
+            </button>
+          ) : null}
 
           <div className="mt-5 rounded-lg bg-stone-950 px-4 py-3 text-white">
             <p className="text-xs font-medium uppercase tracking-wide text-stone-400">

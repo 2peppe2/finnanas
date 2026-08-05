@@ -14,7 +14,11 @@ const userLocationPaneName = "user-location-pane";
 
 type UseFinnanasLeafletMapOptions = {
   activeLayer: LayerOption;
+  bearing: number;
   geoJson: GeoJsonData | null;
+  isFollowingUser: boolean;
+  isNavigationMode: boolean;
+  onMapMovedByUser: () => void;
   onSelectionCleared: () => void;
   onFeatureSelected: (feature: GeoJsonFeature | null) => void;
   userLocation: UserLocation | null;
@@ -22,7 +26,11 @@ type UseFinnanasLeafletMapOptions = {
 
 export function useFinnanasLeafletMap({
   activeLayer,
+  bearing,
   geoJson,
+  isFollowingUser,
+  isNavigationMode,
+  onMapMovedByUser,
   onFeatureSelected,
   onSelectionCleared,
   userLocation,
@@ -38,6 +46,8 @@ export function useFinnanasLeafletMap({
   const selectedHaloRef = useRef<L.GeoJSON | null>(null);
   const userMarkerRef = useRef<L.CircleMarker | null>(null);
   const accuracyCircleRef = useRef<L.Circle | null>(null);
+  const clearSelectionRef = useRef<() => void>(() => undefined);
+  const onMapMovedByUserRef = useRef<() => void>(() => undefined);
   const [leafletMap, setLeafletMap] = useState<L.Map | null>(null);
 
   const clearSelection = useCallback(() => {
@@ -56,6 +66,14 @@ export function useFinnanasLeafletMap({
   }, [onFeatureSelected, onSelectionCleared]);
 
   useEffect(() => {
+    clearSelectionRef.current = clearSelection;
+  }, [clearSelection]);
+
+  useEffect(() => {
+    onMapMovedByUserRef.current = onMapMovedByUser;
+  }, [onMapMovedByUser]);
+
+  useEffect(() => {
     if (!mapElementRef.current || mapRef.current) {
       return;
     }
@@ -72,7 +90,8 @@ export function useFinnanasLeafletMap({
     if (userLocationPane) {
       userLocationPane.style.zIndex = "700";
     }
-    map.on("click", clearSelection);
+    map.on("click", () => clearSelectionRef.current());
+    map.on("dragstart", () => onMapMovedByUserRef.current());
 
     mapRef.current = map;
     setLeafletMap(map);
@@ -86,7 +105,7 @@ export function useFinnanasLeafletMap({
       userMarkerRef.current = null;
       accuracyCircleRef.current = null;
     };
-  }, [clearSelection]);
+  }, []);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -206,11 +225,44 @@ export function useFinnanasLeafletMap({
 
     accuracyCircleRef.current.bringToFront();
     userMarkerRef.current.bringToFront();
+
+    if (isNavigationMode && isFollowingUser) {
+      map.setView(latLng, Math.max(map.getZoom(), 17), {
+        animate: true,
+      });
+    }
+  }, [isFollowingUser, isNavigationMode, userLocation]);
+
+  useEffect(() => {
+    const mapElement = mapElementRef.current;
+
+    if (!mapElement) {
+      return;
+    }
+
+    mapElement.style.transform = isNavigationMode
+      ? `rotate(${-bearing}deg) scale(1.18)`
+      : "";
+    mapElement.style.transformOrigin = "center center";
+    mapElement.style.transition = "transform 240ms ease-out";
+  }, [bearing, isNavigationMode]);
+
+  const recenterOnUser = useCallback(() => {
+    const map = mapRef.current;
+
+    if (!map || !userLocation) {
+      return;
+    }
+
+    map.setView([userLocation.lat, userLocation.lng], Math.max(map.getZoom(), 17), {
+      animate: true,
+    });
   }, [userLocation]);
 
   return {
     clearSelection,
     leafletMap,
     mapElementRef,
+    recenterOnUser,
   };
 }
